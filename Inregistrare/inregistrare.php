@@ -12,7 +12,7 @@
     <div class="container-fluid h-100">
         <div class="row h-100">
             <!-- Zona pentru imagine -->
-            <div class="col-md-7">
+            <div class="col-md-7 p-0">
                 <img src="/Imagini/bilete-dinamo_CoverImage.png" class="img-fluid img-full-height" alt="bilete-dinamo Cover Image">
             </div>
             <!-- Zona pentru formular -->
@@ -43,12 +43,12 @@
                         </div>
                         <div class="form-group form-check mt-4">
                             <input type="checkbox" class="form-check-input" id="terms">
-                            <label class="form-check-label" for="terms">Sunt de acord cu termenii si conditiile</label>
+                            <label class="form-check-label" for="terms">Sunt de acord cu <a href="../termenii_si_conditiile.php">termenii și conditiile.</a></label>
                         </div>
                         <div class="mb-4 ml-4">
-                            Ai deja un cont? <a href="/Autentificare/autentificare.php">Autentifica-te</a>
+                            Ai deja un cont? <a href="/Autentificare/autentificare.php">Autentifică-te!</a>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">CREEAZĂ-ȚI CONTUL</button>
+                        <button type="submit" class="btn btn-block custom-btn mt-5 pt-2 pb-2">CREEAZĂ-ȚI CONTUL</button>
                     </form>
                 </div>
             </div>

@@ -13,7 +13,6 @@ body {
 
 .img-full-height {
     height: 100vh;
-    object-fit: cover;
 }
 
 h2 {
@@ -22,4 +21,33 @@ h2 {
     color: #fff;
     margin-bottom: 1rem;
     margin-bottom: 50px;
+}
+
+.form-control {
+    border: 2px solid #000;
+}
+
+.form-control:focus {
+    border-color: #000; /* Schimbă culoarea border-ului */
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.346);
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #5a5959;
+}
+
+.custom-btn {
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 15px;
+}
+
+.custom-btn:hover {
+    background-color: #000;
+    color: #fff;
 }
