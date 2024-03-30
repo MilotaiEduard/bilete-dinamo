@@ -1,0 +1,85 @@
+CREATE TABLE Utilizatori (
+    UtilizatorID INT AUTO_INCREMENT PRIMARY KEY,
+    Nume VARCHAR(50),
+    Prenume VARCHAR(50),
+    Email VARCHAR(50) UNIQUE,
+    Telefon VARCHAR(15) UNIQUE,
+    Parola VARCHAR(255),
+    Rol ENUM('user', 'admin') NOT NULL
+);
+
+CREATE TABLE Evenimente (
+    EvenimentID INT AUTO_INCREMENT PRIMARY KEY,
+    Nume_Eveniment VARCHAR(50),
+    Data_Eveniment DATETIME,
+    Locatie_Eveniment VARCHAR(50)
+);
+
+CREATE TABLE Bilete (
+    BiletID INT AUTO_INCREMENT PRIMARY KEY,
+    DetaliiLocID INT,
+    EvenimentID INT,
+    FOREIGN KEY (DetaliiLocID) REFERENCES DetaliiLocuri(DetaliiLocID),
+    FOREIGN KEY (EvenimentID) REFERENCES Evenimente(EvenimentID)
+);
+
+CREATE TABLE CategoriiLocuri (
+    CategorieID INT AUTO_INCREMENT PRIMARY KEY,
+    Nume_Categorie VARCHAR(50),
+    Pret DECIMAL(10,2)
+);
+
+CREATE TABLE DetaliiLocuri (
+    DetaliiLocID INT AUTO_INCREMENT PRIMARY KEY,
+    Sector VARCHAR(50),
+    Rand INT,
+    NumarLoc INT,
+    Disponibilitate VARCHAR(20) DEFAULT 'Disponibil',
+    CategorieID INT,
+    FOREIGN KEY (CategorieID) REFERENCES CategoriiLocuri(CategorieID)
+);
+
+CREATE TABLE Plati (
+    PlataID INT AUTO_INCREMENT PRIMARY KEY,
+    Suma_Platita DECIMAL(10,2),
+    Data_Plata DATETIME,
+    UtilizatorID INT,
+    FOREIGN KEY (UtilizatorID) REFERENCES Utilizatori(UtilizatorID)
+);
+
+CREATE TABLE Vanzari (
+    VanzareID INT AUTO_INCREMENT PRIMARY KEY,
+    Cantitate INT(11),
+    Data_Vanzare DATETIME,
+    UtilizatorID INT,
+    BiletID INT,
+    FOREIGN KEY (UtilizatorID) REFERENCES Utilizatori(UtilizatorID),
+    FOREIGN KEY(BiletID) REFERENCES Bilete(BiletID)
+);
+
+CREATE TABLE Facturi (
+    FacturaID INT AUTO_INCREMENT PRIMARY KEY,
+    Numar_Factura VARCHAR(50) UNIQUE,
+    Data_Factura DATETIME,
+    UtilizatorID INT,
+    PlataID INT,
+    FOREIGN KEY (UtilizatorID) REFERENCES Utilizatori(UtilizatorID),
+    FOREIGN KEY (PlataID) REFERENCES Plati(PlataID)
+);
+
+CREATE TABLE DateFacturare (
+    DateFacturareID INT AUTO_INCREMENT PRIMARY KEY,
+    PersoanaContact_Nume VARCHAR(50),
+    PersoanaContact_Prenume VARCHAR(50),
+    Telefon VARCHAR(15),
+    Adresa_Strada VARCHAR(100),
+    Adresa_Numar VARCHAR(10),
+    Adresa_Bloc VARCHAR(10),
+    Adresa_Scara VARCHAR(10),
+    Adresa_Etaj VARCHAR(10),
+    Adresa_Apartament VARCHAR(10),
+    Judet VARCHAR(50),
+    Localitate VARCHAR(50),
+    UtilizatorID INT,
+    FOREIGN KEY (UtilizatorID) REFERENCES Utilizatori(UtilizatorID)
+);
