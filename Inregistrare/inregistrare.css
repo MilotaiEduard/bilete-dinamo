@@ -37,6 +37,14 @@ h2 {
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.346);
 }
 
+.field-icon {
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 7.5px);
+    cursor: pointer;
+    z-index: 2;
+}
+
 a {
     color: #000;
     text-decoration: underline;

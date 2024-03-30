@@ -20,32 +20,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($nume) || empty($prenume) || empty($email) || empty($telefon) || empty($parola) || empty($confirmare_parola)) {
         $error = 'Toate câmpurile sunt obligatorii.';
     } elseif (!$terms) {
-        // Verificarea specifică pentru termenii și condițiile nebifate
         $error = 'Trebuie să fii de acord cu termenii și condițiile pentru a te înregistra.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Formatul adresei de email este incorect.';
     } elseif ($parola !== $confirmare_parola) {
         $error = 'Parolele nu coincid.';
+    } elseif (strlen($parola) < 5) {
+        $error = 'Parola trebuie să conțină cel puțin 5 caractere.';
     } else {
-        // Verificarea unicității emailului
-        $sql = "SELECT Email FROM Utilizatori WHERE Email = '$email'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            $error = 'Email-ul este deja folosit.';
+        // Verificarea lungimii numărului de telefon
+        $lungimeTelefon = strlen($telefon);
+        if ($lungimeTelefon < 7 || $lungimeTelefon > 15) {
+            $error = 'Formatul numărului de telefon este incorect.';
         } else {
-            // Verificarea unicității numărului de telefon
-            $sql = "SELECT Telefon FROM Utilizatori WHERE Telefon = '$telefon'";
+            // Verificarea unicității emailului
+            $sql = "SELECT Email FROM Utilizatori WHERE Email = '$email'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
-                $error = 'Numărul de telefon este deja folosit.';
+                $error = 'Email-ul este deja existent.';
             } else {
-                // Toate verificările au trecut, inserăm utilizatorul în baza de date
-                $parola_hash = password_hash($parola, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO Utilizatori (Nume, Prenume, Email, Telefon, Parola, Rol) VALUES ('$nume', '$prenume', '$email', '$telefon', '$parola_hash', 'user')";
-                if (mysqli_query($conn, $sql)) {
-                    $success = 'Contul a fost creat cu succes. Redirecționare...';
-                    header("refresh:3;url=/Autentificare/autentificare.php");
-                    exit();
+                // Verificarea unicității numărului de telefon
+                $sql = "SELECT Telefon FROM Utilizatori WHERE Telefon = '$telefon'";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    $error = 'Numărul de telefon este deja existent.';
                 } else {
-                    $error = 'A apărut o eroare la înregistrare.';
+                    // Toate verificările au trecut, inserăm utilizatorul în baza de date
+                    $parola_hash = password_hash($parola, PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO Utilizatori (Nume, Prenume, Email, Telefon, Parola, Rol) VALUES ('$nume', '$prenume', '$email', '$telefon', '$parola_hash', 'user')";
+                    if (mysqli_query($conn, $sql)) {
+                        $success = 'Contul a fost creat cu succes. Redirecționare...';
+                        header("refresh:3;url=/Autentificare/autentificare.php");
+                    } else {
+                        $error = 'A apărut o eroare la înregistrare.';
+                    }
                 }
             }
         }
@@ -87,26 +95,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php endif; ?>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="nume" autocomplete="off" placeholder="Nume">
+                            <input type="text" class="form-control" name="nume" autocomplete="off" placeholder="Nume" value="<?php echo isset($_POST['nume']) ? htmlspecialchars($_POST['nume']) : ''; ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="prenume" autocomplete="off" placeholder="Prenume">
+                            <input type="text" class="form-control" name="prenume" autocomplete="off" placeholder="Prenume" value="<?php echo isset($_POST['prenume']) ? htmlspecialchars($_POST['prenume']) : ''; ?>">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" autocomplete="off" placeholder="Email">
+                            <input type="text" class="form-control" name="email" autocomplete="off" placeholder="Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" name="telefon" autocomplete="off" placeholder="Număr de telefon">
+                            <input type="tel" class="form-control" name="telefon" autocomplete="off" placeholder="Număr de telefon" value="<?php echo isset($_POST['telefon']) ? htmlspecialchars($_POST['telefon']) : ''; ?>">
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="parola" placeholder="Parola">
+                        <div class="form-group position-relative">
+                            <input type="password" class="form-control" name="parola" placeholder="Parola" id="parola">
+                            <i toggle="#parola" class="fas fa-fw fa-eye-slash field-icon toggle-password" style="color: black;"></i>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="confirmare_parola" placeholder="Confirmă Parola">
+                        <div class="form-group position-relative">
+                            <input type="password" class="form-control" name="confirmare_parola" placeholder="Confirmă Parola" id="confirmare_parola">
+                            <i toggle="#confirmare_parola" class="fas fa-fw fa-eye-slash field-icon toggle-password" style="color: black;"></i>
                         </div>
                         <div class="form-group form-check mt-4">
-                            <input type="checkbox" class="form-check-input" name="terms" id="terms">
-                            <label class="form-check-label" for="terms">Sunt de acord cu <a href="../termenii_si_conditiile.php" target="_blank">termenii și conditiile.</a></label>
+                            <input type="checkbox" class="form-check-input" name="terms" id="terms" <?php echo isset($_POST['terms']) ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="terms">Sunt de acord cu <a href="../termenii_si_conditiile.php" target="_blank">termenii și condițiile.</a></label>
                         </div>
                         <div class="mb-4 ml-4">
                             Ai deja un cont? <a href="/Autentificare/autentificare.php">Autentifică-te!</a>
@@ -130,6 +140,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $('.alert').fadeOut('slow');
             }, 3000);
         });
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Adaugă listener pe click pentru toate elementele cu clasa "toggle-password"
+        document.querySelectorAll('.toggle-password').forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Identifică input-ul corespunzător
+                var input = document.querySelector(this.getAttribute("toggle"));
+                if (input.getAttribute("type") == "password") {
+                    input.setAttribute("type", "text");
+                    this.classList.remove("fa-eye-slash");
+                    this.classList.add("fa-eye");
+                } else {
+                    input.setAttribute("type", "password");
+                    this.classList.remove("fa-eye");
+                    this.classList.add("fa-eye-slash");
+                }
+            });
+        });
+    });
     </script>
 
 </body>
