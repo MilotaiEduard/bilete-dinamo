@@ -20,7 +20,12 @@ h2 {
     font-weight: 600;
     color: #fff;
     margin-bottom: 1rem;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.alert-container {
+    min-height: 60px;
+    margin-bottom: 20px;
 }
 
 .form-control {
