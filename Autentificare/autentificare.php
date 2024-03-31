@@ -1,3 +1,44 @@
+<?php
+
+session_start();
+
+$error = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include '../db_connect.php'; // Conectare la baza de date
+
+    $email = mysqli_real_escape_string($conn, trim($_POST['email']));
+    $parola = mysqli_real_escape_string($conn, trim($_POST['parola']));
+
+    if (empty($email) && empty($parola)) {
+        $error = 'Vă rugăm să completați câmpurile pentru email și parolă!';
+    } elseif (empty($email)) {
+        $error = 'Vă rugăm să completați câmpul pentru email!';
+    } elseif (empty($parola)) {
+        $error = 'Vă rugăm să completați câmpul pentru parolă!';
+    } else {
+        // Dacă ambele câmpuri sunt completate, verificăm credențialele
+        $sql = "SELECT UtilizatorID, Parola FROM Utilizatori WHERE Email = '$email'";
+        $result = mysqli_query($conn, $sql);
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            if (password_verify($parola, $row['Parola'])) {
+                // Parola este corectă, autentificarea a reușit
+                $_SESSION['user_id'] = $row['UtilizatorID']; // Stocăm ID-ul utilizatorului în sesiune
+                header('Location: MeniuPrincipal/meniu_principal.php'); // Redirecționăm utilizatorul
+                exit();
+            } else {
+                $error = 'Email sau parolă incorectă.';
+            }
+        } else {
+            $error = 'Email sau parolă incorectă.';
+        }
+    }
+    mysqli_close($conn);
+}
+?>
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +74,7 @@
                             <input type="password" class="form-control" name="parola" placeholder="Parola" id="parola">
                             <i toggle="#parola" class="fas fa-fw fa-eye-slash field-icon toggle-password" style="color: black;"></i>
                         </div>
-                        <div class="mb-4 ml-1">
+                        <div class="mb-4 mt-4 ml-1">
                             Nu ai un cont? <a href="/Inregistrare/inregistrare.php">Înregistrează-te!</a>
                         </div>
                         <button type="submit" class="btn btn-block custom-btn mt-5 pt-2 pb-2">INTRĂ ÎN CONT</button>

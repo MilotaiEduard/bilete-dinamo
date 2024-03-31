@@ -19,12 +19,11 @@ h2 {
     font-size: 2rem;
     font-weight: 600;
     color: #fff;
-    margin-bottom: 1rem;
     margin-bottom: 30px;
 }
 
 .alert-container {
-    min-height: 60px;
+    min-height: 75px;
     margin-bottom: 20px;
 }
 
