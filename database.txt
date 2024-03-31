@@ -8,6 +8,14 @@ CREATE TABLE Utilizatori (
     Rol ENUM('user', 'admin') NOT NULL
 );
 
+CREATE TABLE ResetareParola (
+    ResetID INT AUTO_INCREMENT PRIMARY KEY,
+    Email VARCHAR(50),
+    Token VARCHAR(255),
+    Expira DATETIME,
+    FOREIGN KEY (Email) REFERENCES Utilizatori(Email)
+);
+
 CREATE TABLE Evenimente (
     EvenimentID INT AUTO_INCREMENT PRIMARY KEY,
     Nume_Eveniment VARCHAR(50),

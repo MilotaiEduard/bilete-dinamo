@@ -74,7 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="password" class="form-control" name="parola" placeholder="Parola" id="parola">
                             <i toggle="#parola" class="fas fa-fw fa-eye-slash field-icon toggle-password" style="color: black;"></i>
                         </div>
-                        <div class="mb-4 mt-4 ml-1">
+                        <div class="float-right">
+                            <a href="/ResetareParola/resetare_parola.php">Ai uitat parola?</a>
+                        </div>
+                        <div class="mb-4 ml-1 inregistrare">
                             Nu ai un cont? <a href="/Inregistrare/inregistrare.php">Înregistrează-te!</a>
                         </div>
                         <button type="submit" class="btn btn-block custom-btn mt-5 pt-2 pb-2">INTRĂ ÎN CONT</button>
