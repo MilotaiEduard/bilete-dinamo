@@ -2,11 +2,20 @@
 
 session_start(); // Începe sesiunea
 
-// Verifică dacă există un mesaj de eroare setat în sesiune și îl stocăm în variabila $error
+include '../db_connect.php'; // Include fișierul de conexiune la baza de date
+
+// Verifică dacă există un mesaj de eroare sau succes setat în sesiune și îl stocăm în variabila $error, respectiv $success
 $error = '';
+$success = '';
+
 if (isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION['error']); // Șterge mesajul de eroare din sesiune după ce a fost preluat
+}
+
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']); // Șterge mesajul de succes din sesiune după ce a fost preluat
 }
 
 ?>
@@ -32,9 +41,12 @@ if (isset($_SESSION['error'])) {
                         <?php if ($error): ?>
                             <div class="alert alert-danger text-center" role="alert"><?php echo $error; ?></div>
                         <?php endif; ?>
+                        <?php if ($success): ?>
+                            <div class="alert alert-success text-center" role="alert"><?php echo $success; ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="text" class="form-control" id="email" name="email" autocomplete="off" placeholder="Email">
                     </div>
                     <button type="submit" class="btn custom-btn btn-block mt-5">TRIMITE EMAIL-UL DE RESETARE</button>
                 </form>

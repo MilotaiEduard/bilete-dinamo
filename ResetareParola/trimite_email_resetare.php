@@ -1,40 +1,58 @@
-<<?php
+<?php
 
-session_start(); // Începe sesiunea
+session_start();
 
-include '../db_connect.php'; // Conectarea la baza de date
+include '../db_connect.php';
 
-$email = mysqli_real_escape_string($conn, trim($_POST['email']));
+$email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 
-// Verifică dacă emailul există în baza de date
-$sql = "SELECT Email FROM Utilizatori WHERE Email = '$email'";
-$result = mysqli_query($conn, $sql);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['error'] = 'Adresa de email introdusă nu este validă.';
+    header('Location: /ResetareParola/resetare_parola.php');
+    exit();
+}
 
-if (mysqli_num_rows($result) == 0) {
-    // Dacă emailul nu există, setează un mesaj de eroare și redirecționează înapoi la formular
-    $_SESSION['error'] = 'Emailul nu a fost găsit în baza de date.';
+$sql = "SELECT Email FROM Utilizatori WHERE Email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows == 0) {
+    $_SESSION['error'] = 'Email-ul nu a fost găsit în baza de date.';
     header('Location: /ResetareParola/resetare_parola.php');
     exit();
 } else {
-    $token = bin2hex(random_bytes(50)); // Generează un token unic
-    $expira = date("Y-m-d H:i:s", strtotime("+1 hour")); // Setează expirarea tokenului la 1 oră de la momentul generării
+    $token = bin2hex(random_bytes(50));
+    $expira = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
-    // Inserează informațiile în tabelul ResetareParola
-    $sql = "INSERT INTO ResetareParola (Email, Token, Expira) VALUES ('$email', '$token', '$expira')";
-    $result = mysqli_query($conn, $sql);
+    // Verifică dacă există deja un token activ și îl actualizează sau inserează unul nou
+    $sql = "DELETE FROM ResetareParola WHERE Email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
 
-    if ($result) {
-        // Trimite emailul de resetare
-        $to = $email;
-        $subject = 'Resetarea parolei contului dumneaovoastră';
-        $message = 'Pentru a reseta parola, accesați următorul link: http://localhost/ResetareParola/pagina_resetare_parola.php?token=' . $token;
-        $headers = 'From: no-reply@bilete-dinamo.com';
+    $sql = "INSERT INTO ResetareParola (Email, Token, Expira) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $email, $token, $expira);
+    $stmt->execute();
 
-        mail($to, $subject, $message, $headers);
+    // Trimite emailul de resetare
+    $to = $email;
+    $subject = 'Resetarea parolei contului dumneavoastră';
+    $message = "Pentru a reseta parola, accesați următorul link în următoarea oră: \n\nhttp://localhost/ResetareParola/pagina_resetare_parola.php?token=" . $token . "\n\nDacă nu ați solicitat resetarea parolei, vă rugăm să ignorați acest email.";
+    $headers = 'From: no-reply@bilete-dinamo.com';
+
+    if (mail($to, $subject, $message, $headers)) {
+        $_SESSION['success'] = 'Instrucțiunile pentru resetarea parolei au fost trimise la adresa de email specificată.';
+    } else {
+        $_SESSION['error'] = 'A apărut o eroare la trimiterea emailului. Vă rugăm să încercați din nou.';
     }
 
+    header('Location: /ResetareParola/resetare_parola.php');
+    exit();
 }
 
 mysqli_close($conn);
-?>
 
+?>
