@@ -26,7 +26,7 @@ if (isset($_SESSION['success'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resetare Parolă</title>
+    <title>Email de resetare</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resetare_parola.css">
@@ -35,21 +35,26 @@ if (isset($_SESSION['success'])) {
     <div class="container h-100 w-50">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-6">
-                <form action="trimite_email_resetare.php" method="post" class="p-4 rounded">
-                    <h2 class="text-center">Resetare parolă</h2>
-                    <div class="alert-container w-100">
-                        <?php if ($error): ?>
-                            <div class="alert alert-danger text-center" role="alert"><?php echo $error; ?></div>
-                        <?php endif; ?>
-                        <?php if ($success): ?>
-                            <div class="alert alert-success text-center" role="alert"><?php echo $success; ?></div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="email" name="email" autocomplete="off" placeholder="Email">
-                    </div>
-                    <button type="submit" class="btn custom-btn btn-block mt-5">TRIMITE EMAIL-UL DE RESETARE</button>
-                </form>
+                <div class="form-container">
+                    <form action="trimite_email_resetare.php" method="post" class="p-4 rounded">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h2 class="text-center">Email de resetare</h2>
+                        <div class="alert-container w-100">
+                            <?php if ($error): ?>
+                                <div class="alert alert-danger text-center" role="alert"><?php echo $error; ?></div>
+                            <?php endif; ?>
+                            <?php if ($success): ?>
+                                <div class="alert alert-success text-center" role="alert"><?php echo $success; ?></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" name="email" autocomplete="off" placeholder="Email">
+                        </div>
+                        <button type="submit" class="btn custom-btn btn-block mt-5">TRIMITE EMAIL-UL DE RESETARE</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

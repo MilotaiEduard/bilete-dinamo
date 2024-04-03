@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 
 include '../db_connect.php';
@@ -12,8 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $parola_noua = $_POST['parola_noua'];
     $confirma_parola = $_POST['confirma_parola'];
 
-    if ($parola_noua != $confirma_parola) {
-        $error = 'Parolele introduse nu corespund.';
+    if (empty($parola_noua) && empty($confirma_parola)) {
+        $error = 'Ambele câmpuri sunt obligatorii.';
+    } elseif (empty($parola_noua)) {
+        $error = 'Câmpul pentru parola nouă este obligatoriu.';
+    } elseif (empty($confirma_parola)) {
+        $error = 'Câmpul pentru confirmarea parolei este obligatoriu.';
+    } elseif ($parola_noua != $confirma_parola) {
+        $error = 'Parolele introduse nu coincid.';
     } elseif (strlen($parola_noua) < 5) {
         $error = 'Parola trebuie să aibă cel puțin 5 caractere.';
     } else {
@@ -43,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
 
                     $_SESSION['success'] = 'Parola a fost resetată cu succes. Redirecționare...';
-                    header("refresh:3;url=/Autentificare/autentificare.php");
+                    header("refresh:3;url=../Autentificare/autentificare.php");
                 } else {
                     $error = "Eroare la actualizarea parolei.";
                 }
@@ -60,6 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['error'] = $error;
         header("Location: pagina_resetare_parola.php?token=$token");
         exit();
-    }
+    } 
 }
 ?>

@@ -7,14 +7,41 @@
 body {
     font-family: 'Poppins', sans-serif;
     height: 100vh;
+    background-image: url('/Imagini/ResetPasswordBg.png');
+    background-size: cover;
     background-color: #ED1C24;
     color: #fff;
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Asigură că overlay-ul acoperă tot ecranul */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Negru cu opacitate de 50% */
+    z-index: -1; /* Asigură că overlay-ul este sub conținut */
+}
+
+.form-container {
+    background-color: #fff; /* Setează fundalul alb */
+    border-radius: 8px; /* Rotunjește colțurile */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 1); /* Adaugă umbra */
+    padding: 20px; /* Adaugă spațiu în interiorul containerului */
+    margin-top: 20px; /* Dă un spațiu suplimentar deasupra containerului */
+    width: 500px;
+}
+
+i {
+    font-size: 4.5rem;
+    color: #ED1C24;
 }
 
 h2 {
     font-size: 2rem;
     font-weight: 600;
-    color: #fff;
+    color: #000;
     margin-bottom: 30px;
 }
 
@@ -36,6 +63,7 @@ h2 {
     color: #fff;
     border: 2px solid #000;
     border-radius: 15px;
+    background-color: #ED1C24;
 }
 
 .custom-btn:hover {

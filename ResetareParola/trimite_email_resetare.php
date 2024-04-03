@@ -8,10 +8,17 @@ include '../db_connect.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Verifica daca campul email este gol
+if (empty($_POST['email'])) {
+    $_SESSION['error'] = 'Vă rugăm să completați câmpul pentru email!';
+    header('Location: /ResetareParola/resetare_parola.php');
+    exit();
+}
+
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $_SESSION['error'] = 'Adresa de email introdusă nu este validă.';
+    $_SESSION['error'] = 'Formatul adresei de email este incorect.';
     header('Location: /ResetareParola/resetare_parola.php');
     exit();
 }
