@@ -44,15 +44,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmtUpdate->bind_param("ss", $parola_hash, $email);
                     $stmtUpdate->execute();
 
+                /*
                     // Șterge înregistrările expirate și tokenul folosit
                     $sqlDelete = "DELETE FROM ResetareParola WHERE Email = ? OR Expira < NOW()";
                     if ($stmtDelete = $conn->prepare($sqlDelete)) {
                         $stmtDelete->bind_param("s", $email);
                         $stmtDelete->execute();
-                    }
+                    } 
+                */
 
                     $_SESSION['success'] = 'Parola a fost resetată cu succes. Redirecționare...';
-                    header("refresh:3;url=../Autentificare/autentificare.php");
+                    header("Location: pagina_resetare_parola.php?token=$token");
+                    exit();
                 } else {
                     $error = "Eroare la actualizarea parolei.";
                 }
@@ -69,6 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['error'] = $error;
         header("Location: pagina_resetare_parola.php?token=$token");
         exit();
-    } 
+    }
 }
 ?>

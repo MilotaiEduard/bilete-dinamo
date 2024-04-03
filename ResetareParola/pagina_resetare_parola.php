@@ -70,9 +70,18 @@ if (isset($_SESSION['success'])) {
                             <?php endif; ?>
                             <?php if ($success): ?>
                                 <div class="alert alert-success text-center" role="alert">
-                                    <?php echo $_SESSION['$success']; ?>
-                                    <?php unset($_SESSION['$success']); ?>
+                                    <?php echo $success; ?>
                                 </div>
+                                <script>
+                                    setTimeout(function() {
+                                        fetch('sterge_token.php?token=<?php echo $token; ?>')
+                                        .then(response => response.text())
+                                        .then(data => console.log(data))
+                                        .finally(() => {
+                                            window.location.href = '/Autentificare/autentificare.php';
+                                        });
+                                    }, 3000);
+                                </script>
                             <?php endif; ?>
                         </div>
                         <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
