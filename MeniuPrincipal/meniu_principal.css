@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: #EDEFF4;
+}
+
+.navbar-custom {
+    background-color: #ED1C24;
+    border-bottom: 2px solid #000;
+    color: #fff;
+}
+
+/* Stiluri pentru logo pe ecrane mici (mobile) */
+.navbar-brand img {
+    height: 85px; /* Dimensiune mai mică pentru ecrane mici */
+    width: auto;
+}
+
+/* Ajustează padding-ul pentru navbar pe ecrane mici */
+.navbar-custom .container-fluid {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Aplică stiluri specifice pentru ecrane mai mari */
+@media (min-width: 992px) {
+    .logo-outside {
+        position: absolute;
+        top: -8px; /* Ajustează dacă e necesar */
+        left: 2rem;
+        z-index: 10;
+    }
+
+    .navbar-custom .container-fluid {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    /* Stiluri pentru logo pe ecrane mari */
+    .navbar-brand img {
+        height: 100px; /* Dimensiune mai mare pentru ecrane mari */
+        width: auto;
+    }
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    color: #fff;
+    font-size: 1.5rem;
+}

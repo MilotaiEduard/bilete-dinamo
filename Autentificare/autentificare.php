@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($parola, $row['Parola'])) {
                 // Parola este corectă, autentificarea a reușit
                 $_SESSION['user_id'] = $row['UtilizatorID']; // Stocăm ID-ul utilizatorului în sesiune
-                header('Location: MeniuPrincipal/meniu_principal.php'); // Redirecționăm utilizatorul
+                header('Location: ../MeniuPrincipal/meniu_principal.php'); // Redirecționăm utilizatorul
                 exit();
             } else {
                 $error = 'Email sau parolă incorectă.';
