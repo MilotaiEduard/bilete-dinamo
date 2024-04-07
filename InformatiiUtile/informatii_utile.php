@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meniu Principal</title>
+    <title>Informații utile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/MeniuPrincipal/meniu_principal.css">
+    <link rel="stylesheet" href="/InformatiiUtile/informatii_utile.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-4">
-                        <a class="nav-link text-white" href="../InformatiiUtile/informatii_utile.php">INFORMAȚII UTILE</a>
+                        <a class="nav-link text-white active" href="../InformatiiUtile/informatii_utile.php">INFORMAȚII UTILE</a>
                     </li>
                     <li class="nav-item mr-3">
                         <a class="nav-link text-white" href="/Autentificare/autentificare.php">INTRĂ ÎN CONT</a>
@@ -29,6 +29,29 @@
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="custom-content">
+            <h1 class="mb-4">Informații utile</h1>
+            <hr>
+            <h3>Etapele pentru efectuarea unei comenzi online:</h3>
+            <p>1. Accesați www.bilete-dinamo și vă creați cont.</p>
+            <p>2. După autentificare, în meniul principal veți vedea evenimentul curent și pentru a achiziționa un bilet apăsați pe butonul "CUMPĂRĂ BILET"</p>
+            <p>3. Selectați sectorul (portocaliu - sector selectat, roșu - sector disponibil, gri - sector indisponibil) și apoi locurile.</p>
+            <p>4. După selectarea locurilor în sectorul dorit, vă va apărea totalul de plată, iar dedesubt este butonul "COMANDĂ BILETE". Apăsați pe acel buton.</p>
+            <p>5. În continuare, veți vedea detaliile comenzii.</p>
+            <p>6. Completați câmpurile din "Date facturare", iar la modalitatea de plată bifați "Card online"</p>
+            <p>7. Va apărea un formular în care să introduceți datele cardului.</p>
+            <p>8. După completarea acestor date, apăsați pe butonul "ACHIZIȚIONEAZĂ BILETE".</p>
+            <p>9. În scurt timp, după ce plata a fost procesată cu succes, veți primi biletul digital, însoțitit de factura fiscală.</p>
+            <h3 class="mt-4">Metoda de plată:</h3>
+            <p>Bilete comandate pot fi plătite online cu cardul, cardurile acceptate fiind Visa, Maestro și Mastercard.</p>
+            <h3 class="mt-4">Returnarea banilor pe bilete:</h3>
+            <p>În situațiile în care un eveniment se anulează, sau se decide ulterior că se joacă fară spectatori, contravaloarea biletelor va fi returnată clienților</p>
+
+
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

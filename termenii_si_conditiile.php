@@ -8,6 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <style>
         body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
             background-color: #EDEFF4; /* Gri deschis pentru fundalul paginii */
         }
 
