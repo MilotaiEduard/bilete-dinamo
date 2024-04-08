@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-group form-check mt-4">
                             <input type="checkbox" class="form-check-input" name="terms" id="terms" <?php echo isset($_POST['terms']) ? 'checked' : ''; ?>>
-                            <label class="form-check-label" for="terms">Sunt de acord cu <a href="../termenii_si_conditiile.php" target="_blank">termenii și condițiile.</a></label>
+                            <label class="form-check-label" for="terms">Sunt de acord cu <a href="../Legal/termenii_si_conditiile.html" target="_blank">termenii și condițiile.</a></label>
                         </div>
                         <div class="mb-4 ml-4">
                             Ai deja un cont? <a href="/Autentificare/autentificare.php">Autentifică-te!</a>

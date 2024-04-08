@@ -55,8 +55,8 @@
         <div class="footer-container">
             <div class="row">
                 <div class="col-md-5 footer-left">
-                    <a href="politica_confidentialitate.php">Politica de confidențialitate</a> | 
-                    <a href="contact.php">Contact</a>
+                    <a href="../Legal/politica_confidentialitate.html" target="_blank">Politica de confidențialitate</a> | 
+                    <a href="../Legal/contact.html" target="_blank">Contact</a>
                     <p class="p-copyrights">Dinamo 1948 București <i class="far fa-copyright"></i> 2024. Toate drepturile sunt rezervate.</p>
                 </div>
                 <div class="col-md-5 footer-right">
