@@ -122,3 +122,111 @@ hr {
     padding: 20px; /* Spațiere internă */
     margin-top: 20px; /* Spațiere externă sus */
 }
+
+h3 {
+    margin-bottom: 1rem;
+}
+
+h3 + p {
+    margin-top: 0.5rem;
+}
+
+p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Stil pentru ultimul paragraf din fiecare secțiune, pentru a adăuga spațiu suplimentar dedesubt, dacă e necesar */
+.custom-content h3:not(:first-of-type) {
+    margin-top: 2.2rem;
+}
+
+.footer-custom {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 50px;
+    height: 88px;
+}
+
+.footer-custom .footer-left a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.footer-custom .footer-left a:hover {
+    color: #ED1C24;
+}
+
+.footer-custom .footer-right a:first-child {
+    margin-right: 40px;
+}
+
+.footer-custom .footer-right a:hover {
+    text-decoration: none;
+}
+
+.first-image {
+    margin-right: 40px;
+}
+
+.footer-left {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.p-copyrights {
+    font-size: 1rem;
+    color: grey;
+}
+
+@media (max-width: 768px) {
+    .footer-custom {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        width: 100%;
+    }
+    .container {
+        margin-top: 155px;
+    }
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        width: 100%; /* Asigură-te că container-ul se întinde pe toată lățimea */
+    }
+    .footer-left {
+        margin-left: 0px;
+    }
+    .footer-left, .footer-right {
+        text-align: center;
+        width: 100%; /* Asigură-te că fiecare coloană se întinde pe toată lățimea */
+    }
+    .footer-right a {
+        display: block; /* Face ca fiecare link să ocupe propria sa linie */
+        margin-bottom: 10px; /* Adaugă spațiu între link-uri */
+    }
+    .footer-right a:first-child {
+        margin-right: 0; /* Elimină margin-ul de la primul link */
+    }
+    .footer-left img {
+        margin-right: 0px;
+    }
+    .footer-right img {
+        margin-bottom: 20px;
+        margin-right: 0px;
+    }
+}
+
+

@@ -25,6 +25,20 @@
             padding: 20px; /* Spațiere internă */
             margin-top: 20px; /* Spațiere externă sus */
         }
+
+        h3 {
+            margin-bottom: 1rem;
+            margin-top: 2.2rem;
+        }
+
+        h3 + p {
+            margin-top: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
@@ -47,5 +61,6 @@
             <p>Ne rezervăm dreptul de a modifica termenii și condițiile de utilizare ale site-ului fără notificare prealabilă.</p>
         </div>
     </div>
+
 </body>
 </html>

@@ -36,22 +36,40 @@
             <hr>
             <h3>Etapele pentru efectuarea unei comenzi online:</h3>
             <p>1. Accesați www.bilete-dinamo și vă creați cont.</p>
-            <p>2. După autentificare, în meniul principal veți vedea evenimentul curent și pentru a achiziționa un bilet apăsați pe butonul "CUMPĂRĂ BILET"</p>
+            <p>2. După autentificare, în meniul principal veți vedea evenimentul curent și pentru a achiziționa un bilet apăsați pe butonul "CUMPĂRĂ BILET".</p>
             <p>3. Selectați sectorul (portocaliu - sector selectat, roșu - sector disponibil, gri - sector indisponibil) și apoi locurile.</p>
             <p>4. După selectarea locurilor în sectorul dorit, vă va apărea totalul de plată, iar dedesubt este butonul "COMANDĂ BILETE". Apăsați pe acel buton.</p>
             <p>5. În continuare, veți vedea detaliile comenzii.</p>
-            <p>6. Completați câmpurile din "Date facturare", iar la modalitatea de plată bifați "Card online"</p>
+            <p>6. Completați câmpurile din "Date facturare", iar la modalitatea de plată bifați "Card online".</p>
             <p>7. Va apărea un formular în care să introduceți datele cardului.</p>
             <p>8. După completarea acestor date, apăsați pe butonul "ACHIZIȚIONEAZĂ BILETE".</p>
             <p>9. În scurt timp, după ce plata a fost procesată cu succes, veți primi biletul digital, însoțitit de factura fiscală.</p>
-            <h3 class="mt-4">Metoda de plată:</h3>
+            <h3>Metoda de plată:</h3>
             <p>Bilete comandate pot fi plătite online cu cardul, cardurile acceptate fiind Visa, Maestro și Mastercard.</p>
-            <h3 class="mt-4">Returnarea banilor pe bilete:</h3>
-            <p>În situațiile în care un eveniment se anulează, sau se decide ulterior că se joacă fară spectatori, contravaloarea biletelor va fi returnată clienților</p>
-
-
+            <h3>Returnarea banilor pe bilete:</h3>
+            <p>În situațiile în care un eveniment se anulează, sau se decide ulterior că se joacă fară spectatori, contravaloarea biletelor va fi returnată clienților.</p>
         </div>
     </div>
+
+    <footer class="footer-custom">
+        <div class="footer-container">
+            <div class="row">
+                <div class="col-md-5 footer-left">
+                    <a href="politica_confidentialitate.php">Politica de confidențialitate</a> | 
+                    <a href="contact.php">Contact</a>
+                    <p class="p-copyrights">Dinamo 1948 București <i class="far fa-copyright"></i> 2024. Toate drepturile sunt rezervate.</p>
+                </div>
+                <div class="col-md-5 footer-right">
+                    <a href="https://ec.europa.eu/consumers/odr" target="_blank" style="margin-right: 0px; margin-top: 20px;">
+                        <img src="/Imagini/solutionare_online_litigii.png" alt="Solutionarea online a litigiilor" height="50" class="first-image">
+                    </a>
+                    <a href="https://anpc.ro/ce-este-sal/" target="_blank">
+                        <img src="/Imagini/solutionare_alternativa_litigii.png" alt="Solutionarea alternativa a litigiilor" height="50" class="second-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
