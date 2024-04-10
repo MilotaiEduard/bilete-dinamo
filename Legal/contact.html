@@ -21,13 +21,19 @@
             border-radius: 10px;
             margin-top: 20px;
             width: 100%;
-            max-width: 960px; /* Sau orice altă lățime dorită */
-            overflow: hidden; /* Pentru a respecta border-radius în cazul hărții */
+            max-width: 960px;
+            overflow: hidden;
         }
         .contact-container {
             display: flex;
             flex-wrap: wrap;
         }
+
+        h2 {
+            margin-top: 47px;
+            margin-bottom: 30px;
+        }
+
         .contact-details, .contact-map {
             flex: 1;
             padding: 20px;
@@ -37,12 +43,33 @@
         }
         .contact-map {
             max-width: 50%;
-            height: 400px; /* Ajustează înălțimea după preferințe */
+            height: 400px;
         }
         .fa-icon {
             margin-right: 10px;
             color: #ED1C24;
         }
+        @media (max-width: 768px) {
+        .contact-card {
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+        .contact-container {
+            flex-direction: column;
+        }
+        .contact-details, .contact-map {
+            max-width: 100%; /* Permite ambelor să ocupe întreaga lățime */
+        }
+        .contact-map {
+            order: 2; /* Poziționează harta sub detaliile de contact */
+        }
+        .contact-details {
+            order: 1; /* Asigură-te că detaliile de contact vin prima */
+        }
+    }
+</style>
+        
+
     </style>
 </head>
 <body>
@@ -50,20 +77,14 @@
         <div class="container">
             <div class="contact-container">
                 <div class="contact-details">
-                    <h2 class="mb-4"><b>CONTACT</b></h2>
+                    <h2><b>CONTACT</b></h2>
                     <p><i class="fa fa-phone fa-icon"></i><b>Telefon:</b> +40 316 406 974</p>
                     <p><i class="fa fa-fax fa-icon"></i><b>Fax:</b> +40 316 406 975</p>
                     <p><i class="fa fa-building fa-icon"></i><b>Sediu:</b> Șoseaua Ștefan cel Mare 7-9, Bucureşti, sector 2, 020121</p>
                     <p><i class="fa fa-map-marker fa-icon"></i><b>Punct de lucru:</b> Strada Wilhelm Filderman 18, Filderman Office, etaj 6, Bucureşti, sector 3, 030167</p>
                 </div>
                 <div class="contact-map">
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        frameborder="0" style="border:0"
-                        src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Șoseaua+Ștefan+cel+Mare+7-9,București,sector+2"
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11391.220288240918!2d26.10046000057946!3d44.457668131219535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f8af0c27d223%3A0x7ea8d04ba145b14e!2s%C8%98oseaua%20%C8%98tefan%20cel%20Mare%207-9%2C%20Bucure%C8%99ti!5e0!3m2!1sen!2sro!4v1712741780547!5m2!1sen!2sro" width="100%" height="100%" style="border:0;" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
