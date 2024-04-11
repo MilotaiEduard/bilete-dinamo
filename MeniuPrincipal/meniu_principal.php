@@ -37,7 +37,7 @@
             </div>
             <div class="card-body">
                 <div class="card-content text-center mb-3">
-                    <h5 class="card-title text-white">PLAYOUT- ETAPA 4</h5>
+                    <h5 class="card-title text-white">PLAY-OUT - ETAPA 4</h5>
                     <p class="card-text text-white">STADION ARCUL DE TRIUMF</p>
                     <p class="card-text text-white">14 aprilie 2024 - 18:15</p>
                 </div>

@@ -10,6 +10,7 @@ body {
     font-family: 'Poppins', sans-serif;
     height: 100vh;
     background-color: #EDEFF4;
+    padding-bottom: 88px;
 }
 
 .navbar-custom {
@@ -91,8 +92,9 @@ body {
 }
 
 .card {
-    border: 1px solid #000;
+    border: 2px solid #000;
     border-radius: 10px;
+    margin-top: 62px;
 }
 
 .card-header {
@@ -151,6 +153,11 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .card {
+        margin-bottom: -25px;
+    }
+
     .card-header {
         font-size: 1.2rem; /* Ajustează fontul pentru header pe mobile */
     }
@@ -162,15 +169,27 @@ body {
     .card-body {
         padding: 1rem; /* Ajustează padding-ul pentru corpul cardului */
     }
+
+    .home-team, .away-team {
+        margin-left: auto;
+        margin-right: auto;
+        height: 130px;
+        width: auto;
+        margin-top: 67px;
+    }
 }
 
 .footer-custom {
+    position: relative;
+    bottom: -13px;
+    left: 0;
     background-color: #000;
     color: #fff;
     padding: 20px 0;
     margin-top: 50px;
     height: 88px;
     width: 100%;
+    z-index: 1000;
 }
 
 .footer-custom .footer-left a {
