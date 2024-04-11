@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +29,19 @@
                     <li class="nav-item mr-4">
                         <a class="nav-link text-white" href="../InformatiiUtile/informatii_utile.php">INFORMAȚII UTILE</a>
                     </li>
-                    <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/Autentificare/autentificare.php">INTRĂ ÎN CONT</a>
-                    </li>
+                    <!-- Verifică dacă utilizatorul este autentificat și afișează link-uri corespunzătoare -->
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link text-white" href="/Profil/profil.php">CONTUL MEU</a>
+                        </li>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link text-white" href="../logout.php">DECONECTEAZĂ-TE</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link text-white" href="/Autentificare/autentificare.php">INTRĂ ÎN CONT</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -47,7 +64,11 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="#" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="/SelectareLocuri/selectare_locuri.php" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
+                <?php else: ?>
+                    <a href="/Autentificare/autentificare.php" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

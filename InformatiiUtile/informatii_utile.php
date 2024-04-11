@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +16,7 @@
     <link rel="stylesheet" href="/InformatiiUtile/informatii_utile.css">
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid position-relative">
             <a class="navbar-brand logo-outside" href="/MeniuPrincipal/meniu_principal.php">
@@ -22,9 +30,19 @@
                     <li class="nav-item mr-4">
                         <a class="nav-link text-white active" href="../InformatiiUtile/informatii_utile.php">INFORMAȚII UTILE</a>
                     </li>
-                    <li class="nav-item mr-3">
-                        <a class="nav-link text-white" href="/Autentificare/autentificare.php">INTRĂ ÎN CONT</a>
-                    </li>
+                    <!-- Verifică dacă utilizatorul este autentificat și afișează link-uri corespunzătoare -->
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link text-white" href="/Profil/profil.php">CONTUL MEU</a>
+                        </li>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link text-white" href="../logout.php">DECONECTEAZĂ-TE</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link text-white" href="/Autentificare/autentificare.php">INTRĂ ÎN CONT</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
