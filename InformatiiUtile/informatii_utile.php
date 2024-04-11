@@ -53,7 +53,7 @@
 
     <footer class="footer-custom">
         <div class="footer-container">
-            <div class="row">
+            <div class="row" style="margin-right: 0px;">
                 <div class="col-md-5 footer-left">
                     <a href="../Legal/politica_confidentialitate.html" target="_blank">Politica de confidențialitate</a> | 
                     <a href="../Legal/contact.html" target="_blank">Contact</a>
