@@ -1048,13 +1048,13 @@ session_start();
 
         // Zoom in function
         zoomInButton.addEventListener('click', function() {
-            scale *= 1.1;
+            scale *= 1.2;
             transform();
         });
 
         // Zoom out function
         zoomOutButton.addEventListener('click', function() {
-            scale *= 0.9;
+            scale *= 0.8;
             transform();
         });
 
