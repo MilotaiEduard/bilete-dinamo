@@ -1,0 +1,451 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: #EDEFF4;
+    padding-bottom: 88px;
+}
+
+.navbar-custom {
+    background-color: #ED1C24;
+    border-bottom: 2px solid #000;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+/* Stiluri pentru logo pe ecrane mici (mobile) */
+.navbar-brand img {
+    height: 85px; /* Dimensiune mai mică pentru ecrane mici */
+    width: auto;
+}
+
+/* Ajustează padding-ul pentru navbar pe ecrane mici */
+.navbar-custom .container-fluid {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Aplică stiluri specifice pentru ecrane mai mari */
+@media (min-width: 992px) {
+    .logo-outside {
+        position: absolute;
+        top: -8px; /* Ajustează dacă e necesar */
+        left: 2rem;
+        z-index: 10;
+    }
+
+    .navbar-custom .container-fluid {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    /* Stiluri pentru logo pe ecrane mari */
+    .navbar-brand img {
+        height: 100px; /* Dimensiune mai mare pentru ecrane mari */
+        width: auto;
+    }
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Stilizează link-urile din navbar */
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link:focus::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Inițializează linia sub link */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background-color: #fff; /* Culoarea liniei */
+    transition: width 0.3s ease, left 0.3s ease; /* Animatie pentru a lărgi linia */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.step-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    padding: 20px 0;
+    margin-top: 140px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.step-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    margin-right: 10px;
+    border: 2px solid #000;
+}
+
+.step-circle.active {
+    background-color: #ED1C24;
+    color: #fff;
+    border: 2px solid #000;
+}
+
+.step-circle span {
+    display: block;
+    font-weight: bold;
+}
+
+.step-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .step-progress {
+        flex-direction: column;
+    }
+    .step {
+        margin: 10px 0;
+    }
+}
+
+.row-even-spacing {
+    padding-left: .5em;
+}
+
+.panel {
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+    margin-bottom: 25px;
+    background-color: #fff;
+}
+
+.panel-default {
+    border-color: #ddd;
+}
+
+.panel-heading {
+    color: #212121;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    border-bottom: none;
+    padding: 10px 15px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+h4 {
+    font-size: 24px;
+    margin-top: 11.5px;
+    margin-bottom: 11.5px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #444;
+}
+
+.text-help {
+    font-style: italic;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+h4 small {
+    font-size: 50%;
+    font-weight: normal;
+    line-height: 2.2em;
+    color: #bbb;
+}
+
+.text-help .icon-left {
+    font-size: 2em;
+    color: #bbb;
+    float: left;
+    min-width: unset;
+    margin-right: .2em;
+}
+
+.icon-left {
+    min-width: 2em;
+    text-align: center;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.btn {
+    background-color: #fff;
+    text-transform: uppercase;
+    border: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .4);
+    transition: all .4s;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.btn:focus, .btn:active {
+    outline: none;
+    border: 1px solid #000;
+    box-shadow: none;
+}
+
+.list-group {
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.panel-list-group .list-group-item {
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    padding: 15px;
+    position: relative;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    transition: all .2s;
+}
+
+.bullet-price-color {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+a.list-group-item {
+    color: #555;
+}
+
+a {
+    transition: all .2s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.list-group-item:hover {
+    background-color: #eee;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color: #ED1C24;
+    color: #fff;
+    border-color: #ED1C24;
+    z-index: 2;
+}
+
+.svg-map-area-name {
+    fill: #fff;
+    cursor: pointer;
+}
+
+.svg-map-area-shape {
+    cursor: pointer;
+}
+
+.price_color_1 {
+    fill: #90d5d5;
+}
+
+.price_color_2 {
+    fill: #558dfe;
+}
+
+.price_color_3 {
+    fill: #64e229;
+}
+
+.price_color_4 {
+    fill: #ffd98b;
+}
+
+.price_color_5 {
+    fill: #ffb3ad;
+}
+
+.price_color_6 {
+    fill: #a877c8;
+}
+
+.price_color_7 {
+    fill: #e1c4a3;
+}
+
+.price_color_1 {
+    background-color: #90d5d5;
+}
+
+.price_color_2 {
+    background-color: #558dfe;
+}
+
+.price_color_3 {
+    background-color: #64e229;
+}
+
+.price_color_4 {
+    background-color: #ffd98b;
+}
+
+.price_color_5 {
+    background-color: #ffb3ad;
+}
+
+.price_color_6 {
+    background-color: #a877c8;
+}
+
+.price_color_7 {
+    background-color: #e1c4a3;
+}
+
+.footer-custom {
+    position: relative;
+    bottom: -13px;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 50px;
+    height: 88px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.footer-custom .footer-left a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.footer-custom .footer-left a:hover {
+    color: #ED1C24;
+}
+
+.footer-custom .footer-right a:first-child {
+    margin-right: 40px;
+}
+
+.footer-custom .footer-right a:hover {
+    text-decoration: none;
+}
+
+.first-image {
+    margin-right: 40px;
+}
+
+.footer-left {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.p-copyrights {
+    font-size: 1rem;
+    color: grey;
+}
+
+@media (max-width: 768px) {
+    .footer-custom {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        width: 100%;
+        margin-top: 75px;
+    }
+    .container {
+        margin-top: 155px;
+    }
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        width: 100%; /* Asigură-te că container-ul se întinde pe toată lățimea */
+    }
+    .footer-left {
+        margin-left: 0px;
+    }
+    .footer-left, .footer-right {
+        text-align: center;
+        width: 100%; /* Asigură-te că fiecare coloană se întinde pe toată lățimea */
+    }
+    .footer-right a {
+        display: block; /* Face ca fiecare link să ocupe propria sa linie */
+        margin-bottom: 10px; /* Adaugă spațiu între link-uri */
+    }
+    .footer-right a:first-child {
+        margin-right: 0; /* Elimină margin-ul de la primul link */
+    }
+    .footer-left img {
+        margin-right: 0px;
+    }
+    .footer-right img {
+        margin-bottom: 20px;
+        margin-right: 0px;
+    }
+}
