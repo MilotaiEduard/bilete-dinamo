@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eroare 404 - Pagina nu a fost găsită</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #EDEFF4;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .error-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .error-image {
+            width: 100%;
+            max-width: 400px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            margin-bottom: 20px;
+        }
+        .error-text {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .error-link {
+            font-weight: 600;
+            color: #ED1C24;
+            text-decoration: none;
+        }
+        .error-link:hover {
+            text-decoration: underline;
+            color: #ED1C24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 error-container">
+                <img src="/Imagini/Error404Image.png" alt="404 Error" class="error-image img-fluid">
+                <h1>Oops! Pagina nu a fost găsită.</h1>
+                <h4 class="error-text">Ne pare rău, dar pagina pe care încerci să o accesezi nu există sau a fost mutată.</h4>
+                <h5><a href="/MeniuPrincipal/meniu_principal.php" class="error-link">Înapoi la pagina principală</a></h5>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
