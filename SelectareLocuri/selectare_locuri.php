@@ -62,11 +62,10 @@ session_start();
         </div>
     </div>
 
-    <h2 class="mt-5 ml-5 mb-3">Selectează locurile:</h2>
-
+    <h2 class="mt-5 mb-4">Selectează locurile:</h2>
 
     <div class="row row-even-spacing" style="margin-right: 0px;">                   
-        <div class="col-md-6 col-xs-12 row-even-spacing ml-5">
+        <div class="col-md-5 col-xs-12 row-even-spacing" style="margin-left: auto;">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4>
@@ -884,52 +883,32 @@ session_start();
                         <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2623804">
                             <h6 class="pull-left margin-0">
                                 <span class="bullet-price-color price_color_1">&nbsp;</span>
-                                <span>Tribuna 1</span>
+                                <span>Tribuna I</span>
                             </h6>
                             <span class="pull-right">
                                 <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
                             </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>
+                            <span class="pull-right">preț bilet 50,00 RON</span>
                         </a>
                         <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2623887">
                             <h6 class="pull-left margin-0">
                                 <span class="bullet-price-color price_color_2">&nbsp;</span>
-                                <span>Tribuna 1 VIP</span>
+                                <span>Tribuna I VIP</span>
                             </h6>
                             <span class="pull-right">
                                 <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
                             </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>
-                        </a>
-                        <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2623912">
-                            <h6 class="pull-left margin-0">
-                                <span class="bullet-price-color price_color_3">&nbsp;</span>
-                                <span>Loja</span>
-                            </h6>
-                            <span class="pull-right">
-                                <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
-                            </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>	
-                        </a>
-                        <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2623919">
-                            <h6 class="pull-left margin-0">
-                                <span class="bullet-price-color price_color_4">&nbsp;</span>
-                                <span>Media</span>
-                            </h6>
-                            <span class="pull-right">
-                                <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
-                            </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>		
+                            <span class="pull-right">preț bilet 100,00 RON</span>
                         </a>
                         <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2623935">
                             <h6 class="pull-left margin-0">
                                 <span class="bullet-price-color price_color_5">&nbsp;</span>
-                                <span>Tribuna 2</span>
+                                <span>Tribuna II</span>
                             </h6>
                             <span class="pull-right">
                                 <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
                             </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>		
+                            <span class="pull-right">preț bilet 50,00 RON</span>		
                         </a>
                         <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2624040">
                             <h6 class="pull-left margin-0">
@@ -939,32 +918,22 @@ session_start();
                             <span class="pull-right">
                                 <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
                             </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>
-                        </a>
-                        <a href="#" class="list-group-item root-legend-item sectormap-root-clicker clearfix" data-root-identifier="root-id-2624119">
-                            <h6 class="pull-left margin-0">
-                                <span class="bullet-price-color price_color_7">&nbsp;</span>
-                                <span>Peluza Sud</span>
-                            </h6>
-                            <span class="pull-right">
-                                <i class="icon-left fa fa-chevron-right text-larger" aria-hidden="true"></i>
-                            </span>
-                            <span class="pull-right">pret bilet 10,00 RON</span>
+                            <span class="pull-right">preț bilet 25,00 RON</span>
                         </a>
                     </div>
                 </div>    
             </div>
 
             <div class="col-sm-4 mt-5" style="height: 80px;">
-                <h6 class="m-0" style="opacity: 0.6; font-weight: bold;">
-                    <i style="min-width: 40px; font-size: 40px; vertical-align: middle;" class="fa fa-credit-card"></i>
+                <h6 class="m-0" style="opacity: 0.6; font-weight: bold; width: 260px;">
+                    <i style="min-width: 40px; font-size: 40px; vertical-align: middle; margin-bottom: 5px; margin-right: 10px;" class="fa fa-credit-card"></i>
                     Plata online cu cardul
                 </h6>
                 <p class="text-hint text-help" style="font-weight: normal; line-weight: 2.2em; color: #aaa;">poti plati cu cardul online si primesti biletul in format digital</p>
             </div>
         </div>
 
-        <div class="col-md-6 col-xs-12 row-even-spacing">
+        <div class="col-md-5 col-xs-12 row-even-spacing" style="margin-right: auto;">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="hidden-xs">Alege locurile</h4>
@@ -973,20 +942,510 @@ session_start();
                             <label for="root_selector">Categoria de preț</label>
                             <select id="root_selector" class="form-control sectormap-root-selector">
                                 <option>afișează toate</option>
-                                <option value="root-id-2623804">Tribuna 1</option>
-                                <option value="root-id-2623887">Tribuna 1 VIP</option>
-                                <option value="root-id-2623912">Loja</option>
-                                <option value="root-id-2623919">Media</option>
-                                <option value="root-id-2623935">Tribuna 2</option>
-                                <option value="root-id-2624040">Peluza Nord - PCH</option>
-                                <option value="root-id-2624119">Peluza Sud</option>
+                                <option value="root-id-2623804">Tribuna I (50,00 RON)</option>
+                                <option value="root-id-2623887">Tribuna I VIP (100,00 RON)</option>
+                                <option value="root-id-2623935">Tribuna II (50,00 RON)</option>
+                                <option value="root-id-2624040">Peluza Nord - PCH (25,00 RON)</option>
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="panel-list-group">
                     <div class="list-group ticket-offer-list">
-                        
+                        <div class="list-group-item ticket-offer-item root-id-2623804 struct-id-2623804 maparea-id-5508">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna I Vest, Sector A</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623804 struct-id-2623804 maparea-id-5509">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna I Vest, Sector B</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623804 struct-id-2623804 maparea-id-5510">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna I Vest, Sector C</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623804 struct-id-2623804 maparea-id-5511">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna I Vest, Sector D</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623804 struct-id-2623804 maparea-id-5512">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna I Vest, Sector E</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623804 struct-id-2623804 maparea-id-5513">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna I Vest, Sector E1</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623887 struct-id-2623887 maparea-id-5532">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I VIP</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 100,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>VIP 1</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623887 struct-id-2623887 maparea-id-5533">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I VIP</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 100,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>VIP 2</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623887 struct-id-2623887 maparea-id-5534">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I VIP</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 100,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>VIP 3</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623887 struct-id-2623887 maparea-id-5535">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I VIP</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 100,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>VIP 4</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623887 struct-id-2623887 maparea-id-5536">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I VIP</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 100,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>VIP 5</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623887 struct-id-2623887 maparea-id-5537">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA I VIP</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 100,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>VIP 6</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5520">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector J1</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5521">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector J</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5522">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector K</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5523">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector L</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5524">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector M</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5525">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector N</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5526">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector O</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2623935 struct-id-2623935 maparea-id-5527">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>TRIBUNA II</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 50,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Tribuna II Est, Sector O1</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2624040 struct-id-2624040 maparea-id-5514">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>PELUZA NORD - PCH</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 25,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Peluza Nord, Sector F1</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2624040 struct-id-2624040 maparea-id-5515">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>PELUZA NORD - PCH</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 25,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Peluza Nord, Sector F</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2624040 struct-id-2624040 maparea-id-5516">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>PELUZA NORD - PCH</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 25,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Peluza Nord, Sector G</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2624040 struct-id-2624040 maparea-id-5517">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>PELUZA NORD - PCH</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 25,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Peluza Nord, Sector H</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2624040 struct-id-2624040 maparea-id-5518">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>PELUZA NORD - PCH</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 25,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Peluza Nord, Sector I</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-group-item ticket-offer-item root-id-2624040 struct-id-2624040 maparea-id-5519">
+                            <div class="row row-even-spacing">
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing">
+                                    <strong>PELUZA NORD - PCH</strong>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
+                                    <small>x bilete disponibile</small>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
+                                    <label> 25,00 RON </label>
+                                </div>
+                                <div class="col-sm-8 col-xs-12 col-even-spacing">
+                                    <small>Peluza Nord, Sector I1</small>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
+                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1080,6 +1539,44 @@ session_start();
         });
     });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            // Handler pentru schimbarea selectorului dropdown
+            $('#root_selector').change(function() {
+                var selected = $(this).val();
+                handleSelectionChange(selected);
+            });
+
+            // Handler pentru click pe elementele din legenda
+            $('.sectormap-root-clicker').click(function(e) {
+                e.preventDefault();  // Previne comportamentul default al linkului
+                var rootId = $(this).data('root-identifier');  // Obține identificatorul zonei
+                $('#root_selector').val(rootId).change();  // Setează valoarea în dropdown și declanșează eventul change
+                
+                // Gestionarea clasei active
+                $('.sectormap-root-clicker').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Funcție pentru gestionarea schimbării selecției
+            function handleSelectionChange(selected) {
+                // Controlul vizibilității pentru elementele de ticket
+                if (selected === 'afișează toate') {
+                    $('.ticket-offer-item').show();
+                    $('[data-root-identifier]').removeClass('greyed-out');
+                    $('.sectormap-root-clicker').removeClass('active');
+                } else {
+                    $('.ticket-offer-item').hide();
+                    $('.ticket-offer-item.' + selected).show();
+
+                    $('[data-root-identifier]').addClass('greyed-out');
+                    $('[data-root-identifier="' + selected + '"]').removeClass('greyed-out');
+                }
+            }
+        });
+    </script>
+
 
 </body>
 </html>

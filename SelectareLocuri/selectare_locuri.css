@@ -140,6 +140,10 @@ body {
     font-size: 1.1rem;
 }
 
+h2 {
+    margin-left: 160px;
+}
+
 @media (max-width: 768px) {
     .step-progress {
         flex-direction: column;
@@ -147,10 +151,15 @@ body {
     .step {
         margin: 10px 0;
     }
+    h2 {
+        margin-left: 0;
+        text-align: center;
+    }
 }
 
 .row-even-spacing {
     padding-left: .5em;
+    padding-right: .5em;
 }
 
 .panel {
@@ -309,11 +318,11 @@ a:hover {
 }
 
 .price_color_3 {
-    fill: #64e229;
+    fill: #DDDDDD;
 }
 
 .price_color_4 {
-    fill: #ffd98b;
+    fill: #DDDDDD;
 }
 
 .price_color_5 {
@@ -325,7 +334,7 @@ a:hover {
 }
 
 .price_color_7 {
-    fill: #e1c4a3;
+    fill: #DDDDDD;
 }
 
 .price_color_1 {
@@ -337,11 +346,11 @@ a:hover {
 }
 
 .price_color_3 {
-    background-color: #64e229;
+    background-color: #DDDDDD;
 }
 
 .price_color_4 {
-    background-color: #ffd98b;
+    background-color: #DDDDDD;
 }
 
 .price_color_5 {
@@ -353,7 +362,88 @@ a:hover {
 }
 
 .price_color_7 {
-    background-color: #e1c4a3;
+    background-color: #DDDDDD;
+}
+
+.ticket-offer-item:hover {
+    background-color: #fff;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    color: #212121;
+}
+
+.form-group .form-control {
+    color: #666;
+    background-color: #fff;
+    border-radius: 3px !important;
+    padding: 0 1em;
+    margin-left: 25px;
+}
+
+.form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+select:focus, select.form-control:focus {
+    border-color: #ED1C24;
+    outline: none;
+    box-shadow: none;
+}
+
+.panel-list-group .list-group-item {
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+}
+
+.panel-list-group .list-group-item:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+strong {
+    color: #666;
+    font-size: 1em;
+}
+
+small, label {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.panel-list-group .list-group .ticket-offer-item {
+    border-style: dashed;
+    border-width: 2px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.panel-list-group .list-group .ticket-offer-item:first-child {
+    border-bottom: none;
+}
+
+.custom-btn {
+    color: #fff;
+    border-radius: 3px;
+    background-color: #ED1C24;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.custom-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.greyed-out {
+    fill: #DDDDDD;
 }
 
 .footer-custom {
