@@ -929,7 +929,7 @@ session_start();
                     <i style="min-width: 40px; font-size: 40px; vertical-align: middle; margin-bottom: 5px; margin-right: 10px;" class="fa fa-credit-card"></i>
                     Plata online cu cardul
                 </h6>
-                <p class="text-hint text-help" style="font-weight: normal; line-weight: 2.2em; color: #aaa;">poti plati cu cardul online si primesti biletul in format digital</p>
+                <p class="text-hint text-help" style="font-weight: normal; line-weight: 2.2em; color: #aaa;">poți plăti cu cardul online și primești biletul în format digital</p>
             </div>
         </div>
 
@@ -1540,7 +1540,7 @@ session_start();
     });
     </script>
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             // Handler pentru schimbarea selectorului dropdown
             $('#root_selector').change(function() {
@@ -1575,7 +1575,97 @@ session_start();
                 }
             }
         });
+    </script> -->
+
+    <script>
+        $(document).ready(function() {
+            const sectorToZoneMapping = {
+                'maparea-id-5508': 'root-id-2623804', // Tribuna I pentru Sectorul A
+                'maparea-id-5509': 'root-id-2623804', // Tribuna I pentru Sectorul B
+                'maparea-id-5510': 'root-id-2623804', // Tribuna I pentru Sectorul C
+                'maparea-id-5511': 'root-id-2623804', // Tribuna I pentru Sectorul D
+                'maparea-id-5512': 'root-id-2623804', // Tribuna I pentru Sectorul E
+                'maparea-id-5513': 'root-id-2623804', // Tribuna I pentru Sectorul E1
+                'maparea-id-5532': 'root-id-2623887', // Tribuna I VIP pentru VIP 1
+                'maparea-id-5533': 'root-id-2623887', // Tribuna I VIP pentru VIP 2
+                'maparea-id-5534': 'root-id-2623887', // Tribuna I VIP pentru VIP 3
+                'maparea-id-5535': 'root-id-2623887', // Tribuna I VIP pentru VIP 4
+                'maparea-id-5536': 'root-id-2623887', // Tribuna I VIP pentru VIP 5
+                'maparea-id-5537': 'root-id-2623887', // Tribuna I VIP pentru VIP 6
+                'maparea-id-5520': 'root-id-2623935', // Tribuna II pentru Sectorul J1
+                'maparea-id-5521': 'root-id-2623935', // Tribuna II pentru Sectorul J
+                'maparea-id-5522': 'root-id-2623935', // Tribuna II pentru Sectorul K
+                'maparea-id-5523': 'root-id-2623935', // Tribuna II pentru Sectorul L
+                'maparea-id-5524': 'root-id-2623935', // Tribuna II pentru Sectorul M
+                'maparea-id-5525': 'root-id-2623935', // Tribuna II pentru Sectorul N
+                'maparea-id-5526': 'root-id-2623935', // Tribuna II pentru Sectorul O
+                'maparea-id-5527': 'root-id-2623935', // Tribuna II pentru Sectorul O1
+                'maparea-id-5514': 'root-id-2624040', // Peluza Nord pentru Sectorul F1
+                'maparea-id-5515': 'root-id-2624040', // Peluza Nord pentru Sectorul F
+                'maparea-id-5516': 'root-id-2624040', // Peluza Nord pentru Sectorul G
+                'maparea-id-5517': 'root-id-2624040', // Peluza Nord pentru Sectorul H
+                'maparea-id-5518': 'root-id-2624040', // Peluza Nord pentru Sectorul I
+                'maparea-id-5519': 'root-id-2624040', // Peluza Nord pentru Sectorul I1
+            };
+
+            // Handler pentru schimbarea selectorului dropdown
+            $('#root_selector').change(function() {
+                var selected = $(this).val();
+                handleSelectionChange(selected);
+            });
+
+            // Handler pentru click pe elementele din legenda
+            $('.sectormap-root-clicker').click(function(e) {
+                e.preventDefault();
+                var rootId = $(this).data('root-identifier');
+                $('#root_selector').val(rootId).change();
+                $('.sectormap-root-clicker').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Handler pentru click pe sectoarele hărții
+            $('[data-maparea-identifier]').click(function() {
+                var mapAreaId = $(this).data('maparea-identifier');
+                var zoneId = sectorToZoneMapping[mapAreaId];
+                $('#root_selector').val(zoneId).change();
+                handleMapAreaClick(mapAreaId);
+            });
+
+            function handleSelectionChange(selected) {
+                $('.ticket-offer-item').hide();
+                if (selected === 'afișează toate') {
+                    $('.ticket-offer-item').show();
+                    $('.sectormap-root-clicker').removeClass('active');
+                    $('[data-maparea-identifier]').removeClass('greyed-out');
+                } else {
+                    $('.ticket-offer-item.' + selected).show();
+                    highlightMapAreaByZone(selected);
+                }
+            }
+
+            function handleMapAreaClick(mapAreaId) {
+                var zoneId = sectorToZoneMapping[mapAreaId];
+                $('#root_selector').val(zoneId).change();
+                $('.ticket-offer-item').hide();
+                $('.ticket-offer-item.' + mapAreaId).show();
+                highlightMapAreaByZone(mapAreaId);
+            }
+
+            function highlightMapAreaByZone(zoneId) {
+                $('[data-maparea-identifier]').addClass('greyed-out');
+                if (zoneId === 'afișează toate') {
+                    $('[data-maparea-identifier]').removeClass('greyed-out');
+                } else {
+                    if (sectorToZoneMapping.hasOwnProperty(zoneId)) {
+                        $('[data-maparea-identifier="' + zoneId + '"]').removeClass('greyed-out');
+                    } else {
+                        $('[data-root-identifier="' + zoneId + '"]').removeClass('greyed-out');
+                    }
+                }
+            }
+        });
     </script>
+
 
 
 </body>
