@@ -1530,13 +1530,15 @@ session_start();
             });
 
             svgContainer.addEventListener('mousedown', function(e) {
-                origin.x = e.clientX - pan.x;
-                origin.y = e.clientY - pan.y;
-                dragging = true;
+                if (scale > minScale) {
+                    origin.x = e.clientX - pan.x;
+                    origin.y = e.clientY - pan.y;
+                    dragging = true;
+                }
             });
 
             document.addEventListener('mousemove', function(e) {
-                if (dragging) {
+                if (dragging && scale > minScale) {
                     pan.x = e.clientX - origin.x;
                     pan.y = e.clientY - origin.y;
                     transform();
@@ -1580,13 +1582,11 @@ session_start();
                 'maparea-id-5519': 'root-id-2624040', // Peluza Nord pentru Sectorul I1
             };
 
-            // Handler pentru schimbarea selectorului dropdown
             $('#root_selector').change(function() {
                 var selected = $(this).val();
                 handleSelectionChange(selected);
             });
 
-            // Handler pentru click pe elementele din legenda
             $('.sectormap-root-clicker').click(function(e) {
                 e.preventDefault();
                 var rootId = $(this).data('root-identifier');
@@ -1595,7 +1595,6 @@ session_start();
                 $(this).addClass('active');
             });
 
-            // Handler pentru click pe sectoarele hărții
             $('[data-maparea-identifier]').click(function() {
                 if ($(this).hasClass('no-ticket')) {
                     return;
@@ -1608,9 +1607,9 @@ session_start();
 
             function handleSelectionChange(selected) {
                 $('.ticket-offer-item').hide();
+                $('.sectormap-root-clicker').removeClass('active'); // Linie adăugată pentru a înlătura clasa 'active'
                 if (selected === 'afișează toate') {
                     $('.ticket-offer-item').show();
-                    $('.sectormap-root-clicker').removeClass('active');
                     $('[data-maparea-identifier]').removeClass('greyed-out');
                 } else {
                     $('.ticket-offer-item.' + selected).show();
