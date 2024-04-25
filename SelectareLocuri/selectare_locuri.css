@@ -369,6 +369,11 @@ a:hover {
     background-color: #fff;
 }
 
+.no-ticket {
+    cursor: default;
+    pointer-events: none;
+}
+
 .form-group label {
     font-weight: bold;
     display: inline-block;
@@ -430,9 +435,9 @@ small, label {
 }
 
 .custom-btn {
+    background-color: #ED1C24;
     color: #fff;
     border-radius: 3px;
-    background-color: #ED1C24;
     padding: 8px;
     font-size: 14px;
 }
@@ -440,6 +445,9 @@ small, label {
 .custom-btn:hover {
     background-color: #000;
     color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
 }
 
 .greyed-out {

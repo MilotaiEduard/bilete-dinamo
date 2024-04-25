@@ -800,20 +800,20 @@ session_start();
                                             C349.3,1609.6,357.1,1606.2,365.3,1606.2z" class="svg-map-area-shape"></path>
                                         <text transform="matrix(1 0 0 1 293.7899 1711.9407)" style="font-family:'Arial'; font-size:48px;" class="svg-map-area-name">O1</text>
                                     </g>
-                                    <g class="svg-map-area price_color_7" id="svg-map-area-id-5528" data-maparea-identifier="maparea-id-5528" data-root-identifier="root-id-2624119">
+                                    <g class="svg-map-area price_color_7 no-ticket" id="svg-map-area-id-5528" data-maparea-identifier="maparea-id-5528" data-root-identifier="root-id-2624119">
                                         <path style="" d="M336.6,1579.7v-3.2l-140.7,0l0,128.5c0,5.9,7.1,9.1,11.4,5.1l119.7-108.9
                                             C333.1,1595.7,336.6,1587.9,336.6,1579.7z" class="svg-map-area-shape"></path>
                                         <text transform="matrix(1 0 0 1 212.45 1633.7223)" style="font-family:'Arial'; font-size:48px;" class="svg-map-area-name">P1</text>
                                     </g>
-                                    <g class="svg-map-area price_color_7" id="svg-map-area-id-5529" data-maparea-identifier="maparea-id-5529" data-root-identifier="root-id-2624119">
+                                    <g class="svg-map-area price_color_7 no-ticket" id="svg-map-area-id-5529" data-maparea-identifier="maparea-id-5529" data-root-identifier="root-id-2624119">
                                         <polygon style="" points="281.7,1319.8 195.9,1319.8 195.9,1563.8 336.6,1563.8 336.6,1342.9 281.7,1342.9 			" class="svg-map-area-shape"></polygon>
                                         <text transform="matrix(1 0 0 1 244.5237 1468.3887)" style="font-family:'Arial'; font-size:48px;" class="svg-map-area-name">P</text>
                                     </g>
-                                    <g class="svg-map-area price_color_7" id="svg-map-area-id-5531" data-maparea-identifier="maparea-id-5531" data-root-identifier="root-id-2624119">
+                                    <g class="svg-map-area price_color_7 no-ticket" id="svg-map-area-id-5531" data-maparea-identifier="maparea-id-5531" data-root-identifier="root-id-2624119">
                                         <path style="" d="M336.6,1004H195.9v-17.8c0-2.4,0.9-4.6,2.5-6.4l136-150.8c0.8-0.9,2.2-0.3,2.2,0.8V1004z" class="svg-map-area-shape"></path>
                                         <text transform="matrix(1 0 0 1 254.8905 969.8337)" style="font-family:'Arial'; font-size:48px;" class="svg-map-area-name">R</text>
                                     </g>
-                                    <g class="svg-map-area price_color_7" id="svg-map-area-id-5530" data-maparea-identifier="maparea-id-5530" data-root-identifier="root-id-2624119">
+                                    <g class="svg-map-area price_color_7 no-ticket" id="svg-map-area-id-5530" data-maparea-identifier="maparea-id-5530" data-root-identifier="root-id-2624119">
                                         <polygon style="" points="336.6,1290 336.6,1013 195.9,1013 195.9,1309.3 281.7,1309.3 281.7,1290 			" class="svg-map-area-shape"></polygon>
                                         <text transform="matrix(1 0 0 1 241.8638 1174.3884)" style="font-family:'Arial'; font-size:48px;" class="svg-map-area-name">Q</text>
                                     </g>
@@ -841,35 +841,35 @@ session_start();
                                         <rect x="1705.1" y="241" style="" width="176.4" height="40" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1767.64 268.3335)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">VIP 6</text>
                                     </g>
-                                    <g class="svg-map-area price_color_3" id="svg-map-area-id-5505" data-maparea-identifier="maparea-id-5505" data-root-identifier="root-id-2623912">
+                                    <g class="svg-map-area price_color_3 no-ticket" id="svg-map-area-id-5505" data-maparea-identifier="maparea-id-5505" data-root-identifier="root-id-2623912">
                                         <rect x="1191.9" y="201.4" style="" width="93" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1205.5031 223.1672)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">LOJA 1</text>
                                     </g>
-                                    <g class="svg-map-area price_color_3" id="svg-map-area-id-5506" data-maparea-identifier="maparea-id-5506" data-root-identifier="root-id-2623912">
+                                    <g class="svg-map-area price_color_3 no-ticket" id="svg-map-area-id-5506" data-maparea-identifier="maparea-id-5506" data-root-identifier="root-id-2623912">
                                         <rect x="1424.8" y="201.4" style="" width="93" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1438.3162 223.1668)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">LOJA 2</text>
                                     </g>
-                                    <g class="svg-map-area price_color_3" id="svg-map-area-id-5507" data-maparea-identifier="maparea-id-5507" data-root-identifier="root-id-2623912">
+                                    <g class="svg-map-area price_color_3 no-ticket" id="svg-map-area-id-5507" data-maparea-identifier="maparea-id-5507" data-root-identifier="root-id-2623912">
                                         <rect x="1654.6" y="201.4" style="" width="93" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1666.0985 223.167)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">LOJA 3</text>
                                     </g>
-                                    <g class="svg-map-area price_color_4" id="svg-map-area-id-5538" data-maparea-identifier="maparea-id-5538" data-root-identifier="root-id-2623919">
+                                    <g class="svg-map-area price_color_4 no-ticket" id="svg-map-area-id-5538" data-maparea-identifier="maparea-id-5538" data-root-identifier="root-id-2623919">
                                         <rect x="862.9" y="161.9" style="" width="230" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 933.5665 183.8889)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">PRESA 1</text>
                                     </g>
-                                    <g class="svg-map-area price_color_4" id="svg-map-area-id-5539" data-maparea-identifier="maparea-id-5539" data-root-identifier="root-id-2623919">
+                                    <g class="svg-map-area price_color_4 no-ticket" id="svg-map-area-id-5539" data-maparea-identifier="maparea-id-5539" data-root-identifier="root-id-2623919">
                                         <rect x="1097.9" y="161.9" style="" width="230" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1168.5668 183.8891)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">PRESA 2</text>
                                     </g>
-                                    <g class="svg-map-area price_color_4" id="svg-map-area-id-5540" data-maparea-identifier="maparea-id-5540" data-root-identifier="root-id-2623919">
+                                    <g class="svg-map-area price_color_4 no-ticket" id="svg-map-area-id-5540" data-maparea-identifier="maparea-id-5540" data-root-identifier="root-id-2623919">
                                         <rect x="1332.9" y="161.9" style="" width="230" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1399.5673 183.8891)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">PRESA 3</text>
                                     </g>
-                                    <g class="svg-map-area price_color_4" id="svg-map-area-id-5541" data-maparea-identifier="maparea-id-5541" data-root-identifier="root-id-2623919">
+                                    <g class="svg-map-area price_color_4 no-ticket" id="svg-map-area-id-5541" data-maparea-identifier="maparea-id-5541" data-root-identifier="root-id-2623919">
                                         <rect x="1567.9" y="161.9" style="" width="230" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1638.5665 183.8891)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">PRESA 4</text>
                                     </g>
-                                    <g class="svg-map-area price_color_4" id="svg-map-area-id-5542" data-maparea-identifier="maparea-id-5542" data-root-identifier="root-id-2623919">
+                                    <g class="svg-map-area price_color_4 no-ticket" id="svg-map-area-id-5542" data-maparea-identifier="maparea-id-5542" data-root-identifier="root-id-2623919">
                                         <rect x="1802.9" y="161.9" style="" width="210" height="30" class="svg-map-area-shape"></rect>
                                         <text transform="matrix(1 0 0 1 1863.5665 183.8891)" style="font-family:'Arial'; font-size:21px;" class="svg-map-area-name">PRESA 5</text>
                                     </g>
@@ -1492,90 +1492,62 @@ session_start();
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        var svgContainer = document.querySelector('.svg-map-parent');
-        var zoomInButton = document.querySelector('.svg-map-zoom-in');
-        var zoomOutButton = document.querySelector('.svg-map-zoom-out');
-        var scale = 1;
-        var pan = { x: 0, y: 0 };
-        var origin = { x: 0, y: 0 };
-        var dragging = false;
+            var svgContainer = document.querySelector('.svg-map-parent');
+            var zoomInButton = document.querySelector('.svg-map-zoom-in');
+            var zoomOutButton = document.querySelector('.svg-map-zoom-out');
+            var maxScale = 5; // Maximul de zoom-in
+            var minScale = 1; // Minimul de zoom-out
+            var scale = 1;
+            var pan = { x: 0, y: 0 };
+            var origin = { x: 0, y: 0 };
+            var dragging = false;
 
-        // Apply transformations
-        function transform() {
-            svgContainer.style.transform = `translate(${pan.x}px, ${pan.y}px) scale(${scale})`;
-        }
-
-        // Zoom in function
-        zoomInButton.addEventListener('click', function() {
-            scale *= 1.2;
-            transform();
-        });
-
-        // Zoom out function
-        zoomOutButton.addEventListener('click', function() {
-            scale *= 0.8;
-            transform();
-        });
-
-        // Initialize panning when mouse is down
-        svgContainer.addEventListener('mousedown', function(e) {
-            origin.x = e.clientX - pan.x;
-            origin.y = e.clientY - pan.y;
-            dragging = true;
-        });
-
-        // Execute panning when mouse is moving and is down
-        document.addEventListener('mousemove', function(e) {
-            if (dragging) {
-                pan.x = e.clientX - origin.x;
-                pan.y = e.clientY - origin.y;
-                transform();
+            function transform() {
+                window.requestAnimationFrame(() => {
+                    svgContainer.style.transform = `translate(${pan.x}px, ${pan.y}px) scale(${scale})`;
+                });
             }
-        });
 
-        // Stop panning when mouse is up
-        document.addEventListener('mouseup', function() {
-            dragging = false;
-        });
-    });
-    </script>
-
-    <!-- <script>
-        $(document).ready(function() {
-            // Handler pentru schimbarea selectorului dropdown
-            $('#root_selector').change(function() {
-                var selected = $(this).val();
-                handleSelectionChange(selected);
-            });
-
-            // Handler pentru click pe elementele din legenda
-            $('.sectormap-root-clicker').click(function(e) {
-                e.preventDefault();  // Previne comportamentul default al linkului
-                var rootId = $(this).data('root-identifier');  // Obține identificatorul zonei
-                $('#root_selector').val(rootId).change();  // Setează valoarea în dropdown și declanșează eventul change
-                
-                // Gestionarea clasei active
-                $('.sectormap-root-clicker').removeClass('active');
-                $(this).addClass('active');
-            });
-
-            // Funcție pentru gestionarea schimbării selecției
-            function handleSelectionChange(selected) {
-                // Controlul vizibilității pentru elementele de ticket
-                if (selected === 'afișează toate') {
-                    $('.ticket-offer-item').show();
-                    $('[data-root-identifier]').removeClass('greyed-out');
-                    $('.sectormap-root-clicker').removeClass('active');
-                } else {
-                    $('.ticket-offer-item').hide();
-                    $('.ticket-offer-item.' + selected).show();
-
-                    $('[data-root-identifier]').addClass('greyed-out');
-                    $('[data-root-identifier="' + selected + '"]').removeClass('greyed-out');
+            zoomInButton.addEventListener('click', function() {
+                if (scale < maxScale) {
+                    scale *= 1.5;
+                    if (scale > maxScale) {
+                        scale = maxScale;
+                    }
+                    transform();
                 }
-            }
+            });
+
+            zoomOutButton.addEventListener('click', function() {
+                if (scale > minScale) {
+                    scale *= 0.75;
+                    if (scale < minScale) {
+                        scale = minScale;
+                    }
+                    pan.x = pan.y = 0; // Centrarea hărții
+                    transform();
+                }
+            });
+
+            svgContainer.addEventListener('mousedown', function(e) {
+                origin.x = e.clientX - pan.x;
+                origin.y = e.clientY - pan.y;
+                dragging = true;
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (dragging) {
+                    pan.x = e.clientX - origin.x;
+                    pan.y = e.clientY - origin.y;
+                    transform();
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                dragging = false;
+            });
         });
-    </script> -->
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -1625,6 +1597,9 @@ session_start();
 
             // Handler pentru click pe sectoarele hărții
             $('[data-maparea-identifier]').click(function() {
+                if ($(this).hasClass('no-ticket')) {
+                    return;
+                }
                 var mapAreaId = $(this).data('maparea-identifier');
                 var zoneId = sectorToZoneMapping[mapAreaId];
                 $('#root_selector').val(zoneId).change();
@@ -1666,7 +1641,6 @@ session_start();
         });
     </script>
 
-
-
+    
 </body>
 </html>
