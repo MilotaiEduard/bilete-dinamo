@@ -2,6 +2,14 @@
 
 session_start();
 
+// Verifică dacă utilizatorul este autentificat
+if (!isset($_SESSION['user_id'])) {
+    header('Location: /Autentificare/autentificare.php');
+    exit();
+}
+
+include '../db_connect.php';
+
 ?>
 
 
@@ -967,7 +975,7 @@ session_start();
                                     <small>Tribuna I Vest, Sector A</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5508" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -986,7 +994,7 @@ session_start();
                                     <small>Tribuna I Vest, Sector B</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5509" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1005,7 +1013,7 @@ session_start();
                                     <small>Tribuna I Vest, Sector C</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5510" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1024,7 +1032,7 @@ session_start();
                                     <small>Tribuna I Vest, Sector D</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5511" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1043,7 +1051,7 @@ session_start();
                                     <small>Tribuna I Vest, Sector E</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5512" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1062,7 +1070,7 @@ session_start();
                                     <small>Tribuna I Vest, Sector E1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5513" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1081,7 +1089,7 @@ session_start();
                                     <small>VIP 1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5532" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1100,7 +1108,7 @@ session_start();
                                     <small>VIP 2</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5533" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1119,7 +1127,7 @@ session_start();
                                     <small>VIP 3</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5534" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1138,7 +1146,7 @@ session_start();
                                     <small>VIP 4</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5535" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1157,7 +1165,7 @@ session_start();
                                     <small>VIP 5</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5536" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1176,7 +1184,7 @@ session_start();
                                     <small>VIP 6</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5537" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1195,7 +1203,7 @@ session_start();
                                     <small>Tribuna II Est, Sector J1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5520" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1214,7 +1222,7 @@ session_start();
                                     <small>Tribuna II Est, Sector J</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5521" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1233,7 +1241,7 @@ session_start();
                                     <small>Tribuna II Est, Sector K</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5522" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1252,7 +1260,7 @@ session_start();
                                     <small>Tribuna II Est, Sector L</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5523" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1271,7 +1279,7 @@ session_start();
                                     <small>Tribuna II Est, Sector M</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5524" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1290,7 +1298,7 @@ session_start();
                                     <small>Tribuna II Est, Sector N</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5525" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1309,7 +1317,7 @@ session_start();
                                     <small>Tribuna II Est, Sector O</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5526" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1328,7 +1336,7 @@ session_start();
                                     <small>Tribuna II Est, Sector O1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5527" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1347,7 +1355,7 @@ session_start();
                                     <small>Peluza Nord, Sector F1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5514" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1366,7 +1374,7 @@ session_start();
                                     <small>Peluza Nord, Sector F</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5515" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1385,7 +1393,7 @@ session_start();
                                     <small>Peluza Nord, Sector G</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5516" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1404,7 +1412,7 @@ session_start();
                                     <small>Peluza Nord, Sector H</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5517" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1423,7 +1431,7 @@ session_start();
                                     <small>Peluza Nord, Sector I</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5518" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1442,7 +1450,7 @@ session_start();
                                     <small>Peluza Nord, Sector I1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="#" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="selecteaza_locuri.php?sector=5519" class="btn custom-btn btn-xs">Alege locurile</a>
                                 </div>
                             </div>
                         </div>

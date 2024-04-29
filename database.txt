@@ -41,7 +41,7 @@ CREATE TABLE DetaliiLocuri (
     DetaliiLocID INT AUTO_INCREMENT PRIMARY KEY,
     Sector VARCHAR(50),
     Rand INT,
-    NumarLoc INT,
+    Loc INT,
     Disponibilitate VARCHAR(20) DEFAULT 'Disponibil',
     CategorieID INT,
     FOREIGN KEY (CategorieID) REFERENCES CategoriiLocuri(CategorieID)
