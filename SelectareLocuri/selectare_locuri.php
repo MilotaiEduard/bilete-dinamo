@@ -10,6 +10,21 @@ if (!isset($_SESSION['user_id'])) {
 
 include '../db_connect.php';
 
+$disponibilitati = [];
+
+$sql = "SELECT Sector, COUNT(*) as numar_disponibile FROM DetaliiLocuri WHERE Disponibilitate = 'Disponibil' GROUP BY Sector";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $disponibilitati[$row["Sector"]] = $row["numar_disponibile"];
+    }
+} else {
+    echo "0 rezultate";
+}
+
+$conn->close();
+
 ?>
 
 
@@ -966,7 +981,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector A']) ? $disponibilitati['Sector A'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -985,7 +1000,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector B']) ? $disponibilitati['Sector B'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1004,7 +1019,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector C']) ? $disponibilitati['Sector C'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1023,7 +1038,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector D']) ? $disponibilitati['Sector D'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1042,7 +1057,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector E']) ? $disponibilitati['Sector E'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1061,7 +1076,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector E1']) ? $disponibilitati['Sector E1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1080,7 +1095,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['VIP 1']) ? $disponibilitati['VIP 1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1099,7 +1114,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['VIP 2']) ? $disponibilitati['VIP 2'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1118,7 +1133,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['VIP 3']) ? $disponibilitati['VIP 3'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1137,7 +1152,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['VIP 4']) ? $disponibilitati['VIP 4'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1156,7 +1171,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['VIP 5']) ? $disponibilitati['VIP 5'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1175,7 +1190,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['VIP 6']) ? $disponibilitati['VIP 6'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1194,7 +1209,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector J1']) ? $disponibilitati['Sector J1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1213,7 +1228,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector J']) ? $disponibilitati['Sector J'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1232,7 +1247,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector K']) ? $disponibilitati['Sector K'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1251,7 +1266,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector L']) ? $disponibilitati['Sector L'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1270,7 +1285,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector M']) ? $disponibilitati['Sector M'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1289,7 +1304,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector N']) ? $disponibilitati['Sector N'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1308,7 +1323,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector O']) ? $disponibilitati['Sector O'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1327,7 +1342,7 @@ include '../db_connect.php';
                                     <strong>TRIBUNA II</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector O1']) ? $disponibilitati['Sector O1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 50,00 RON </label>
@@ -1346,7 +1361,7 @@ include '../db_connect.php';
                                     <strong>PELUZA NORD - PCH</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector F1']) ? $disponibilitati['Sector F1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 25,00 RON </label>
@@ -1365,7 +1380,7 @@ include '../db_connect.php';
                                     <strong>PELUZA NORD - PCH</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector F']) ? $disponibilitati['Sector F'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 25,00 RON </label>
@@ -1384,7 +1399,7 @@ include '../db_connect.php';
                                     <strong>PELUZA NORD - PCH</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector G']) ? $disponibilitati['Sector G'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 25,00 RON </label>
@@ -1403,7 +1418,7 @@ include '../db_connect.php';
                                     <strong>PELUZA NORD - PCH</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector H']) ? $disponibilitati['Sector H'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 25,00 RON </label>
@@ -1422,7 +1437,7 @@ include '../db_connect.php';
                                     <strong>PELUZA NORD - PCH</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector I']) ? $disponibilitati['Sector I'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 25,00 RON </label>
@@ -1441,7 +1456,7 @@ include '../db_connect.php';
                                     <strong>PELUZA NORD - PCH</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small>x bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector I1']) ? $disponibilitati['Sector I1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 25,00 RON </label>
