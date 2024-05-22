@@ -990,7 +990,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector A</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5508" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1475,6 +1475,22 @@ $conn->close();
         </div>
 	</div>
 
+    <!-- Pop-up modal -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="mt-4 ml-1 mb-3">Selectează locurile</h2>
+            <div class="legend">
+            <span class="legend-item"><span class="dot available"></span> Disponibil</span>
+            <span class="legend-item"><span class="dot occupied"></span> Ocupat</span>
+            <span class="legend-item"><span class="dot unavailable"></span> Indisponibil</span>
+            </div>
+            <div class="seats-container">
+            <!-- Aici vor fi generate locurile -->
+            </div>
+        </div>
+    </div>
+
     <footer class="footer-custom">
         <div class="footer-container">
             <div class="row" style="margin-right: 0px;">
@@ -1660,6 +1676,20 @@ $conn->close();
                     }
                 }
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Deschide pop-up-ul când se apasă pe butonul "ALEGE LOCURILE"
+            $(".open-popup").on("click", function() {
+                $("#popupModal").css("display", "flex");
+            });
+
+            // Închide pop-up-ul când se apasă pe X
+            $(".close").on("click", function() {
+                $("#popupModal").css("display", "none");
+            });
         });
     </script>
 
