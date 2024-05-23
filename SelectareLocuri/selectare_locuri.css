@@ -463,7 +463,7 @@ small, label {
 .modal {
     display: none;
     position: fixed;
-    z-index: 101;
+    z-index: 1001;
     left: 0;
     top: 0;
     width: 100%;
@@ -479,14 +479,21 @@ small, label {
     background-color: #fefefe;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 1200px;
     position: relative;
-    margin-top: -100px;
+    margin-top: 40px;
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 .close {
-    color: #666;
+    color: #333;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
@@ -503,7 +510,7 @@ small, label {
 
 /* Legend styling */
 .legend {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 .legend-item {
@@ -516,6 +523,7 @@ small, label {
     width: 15px;
     border-radius: 50%;
     display: inline-block;
+    margin: 5px;
 }
 
 .available {
@@ -530,11 +538,121 @@ small, label {
     background-color: #bbb;
 }
 
+.seat-dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex; /* Flex display pentru alinierea textului */
+    align-items: center; /* Centrare verticală a textului */
+    justify-content: center; /* Centrare orizontală a textului */
+    margin: 3px;
+    cursor: pointer;
+    color: white; /* Text alb */
+    font-size: 10px; /* Dimensiunea textului */
+    font-weight: bold; /* Text bold */
+}
+
+.seat-dot.selected {
+    background-color: #000 !important;
+    transform: scale(1.3);
+}
+
+.seat-dot:hover {
+    opacity: 0.7;
+}
+
+.seat-dot.available {
+    background-color: #ED1C24;
+}
+
+.seat-dot.occupied {
+    background-color: gray;
+}
+
+.seat-dot.unavailable {
+    background-color: #bbb;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    float: right;
+}
+
   /* Seats container styling */
 .seats-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.row-number {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.field {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.field-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.field-drawing {
+    width: 100%;
+    height: 50px;
+    background-color: green;
+    position: relative;
+    overflow: hidden;
+}
+
+.field-drawing::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-color: white;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.field-drawing::after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border: 5px solid white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-btn-order {
+    background-color: #ED1C24;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
+    width: 150px;
+}
+
+.custom-btn-order:hover {
+    background-color: #000;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.custom-btn-order:focus {
+    outline: none;
+    border: none;
 }
 
 .footer-custom {

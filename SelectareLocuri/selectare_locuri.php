@@ -36,6 +36,8 @@ $conn->close();
     <title>Selectare locuri</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="/SelectareLocuri/selectare_locuri.css">
 </head>
 <body>
@@ -990,7 +992,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector A</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector A">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1009,7 +1011,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector B</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5509" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector B">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1028,7 +1030,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector C</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5510" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector C">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1047,7 +1049,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector D</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5511" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector D">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1066,7 +1068,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector E</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5512" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector E">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1085,7 +1087,7 @@ $conn->close();
                                     <small>Tribuna I Vest, Sector E1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5513" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector E1">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1095,7 +1097,7 @@ $conn->close();
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small><?php echo isset($disponibilitati['VIP 1']) ? $disponibilitati['VIP 1'] : '0'; ?> bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector VIP 1']) ? $disponibilitati['Sector VIP 1'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1104,7 +1106,7 @@ $conn->close();
                                     <small>VIP 1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5532" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector VIP 1">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1114,7 +1116,7 @@ $conn->close();
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small><?php echo isset($disponibilitati['VIP 2']) ? $disponibilitati['VIP 2'] : '0'; ?> bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector VIP 2']) ? $disponibilitati['Sector VIP 2'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1123,7 +1125,7 @@ $conn->close();
                                     <small>VIP 2</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5533" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector VIP 2">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1133,7 +1135,7 @@ $conn->close();
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small><?php echo isset($disponibilitati['VIP 3']) ? $disponibilitati['VIP 3'] : '0'; ?> bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector VIP 3']) ? $disponibilitati['Sector VIP 3'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1142,7 +1144,7 @@ $conn->close();
                                     <small>VIP 3</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5534" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector VIP 3">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1152,7 +1154,7 @@ $conn->close();
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small><?php echo isset($disponibilitati['VIP 4']) ? $disponibilitati['VIP 4'] : '0'; ?> bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector VIP 4']) ? $disponibilitati['Sector VIP 4'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1161,7 +1163,7 @@ $conn->close();
                                     <small>VIP 4</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5535" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector VIP 4">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1171,7 +1173,7 @@ $conn->close();
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small><?php echo isset($disponibilitati['VIP 5']) ? $disponibilitati['VIP 5'] : '0'; ?> bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector VIP 5']) ? $disponibilitati['Sector VIP 5'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1180,7 +1182,7 @@ $conn->close();
                                     <small>VIP 5</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5536" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector VIP 5">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1190,7 +1192,7 @@ $conn->close();
                                     <strong>TRIBUNA I VIP</strong>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right hidden-xs">
-                                    <small><?php echo isset($disponibilitati['VIP 6']) ? $disponibilitati['VIP 6'] : '0'; ?> bilete disponibile</small>
+                                    <small><?php echo isset($disponibilitati['Sector VIP 6']) ? $disponibilitati['Sector VIP 6'] : '0'; ?> bilete disponibile</small>
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-4 col-even-spacing text-right">
                                     <label> 100,00 RON </label>
@@ -1199,7 +1201,7 @@ $conn->close();
                                     <small>VIP 6</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5537" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector VIP 6">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1218,7 +1220,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector J1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5520" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector J1">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1237,7 +1239,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector J</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5521" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector J">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1256,7 +1258,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector K</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5522" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector K">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1275,7 +1277,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector L</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5523" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector L">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1294,7 +1296,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector M</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5524" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector M">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1313,7 +1315,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector N</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5525" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector N">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1332,7 +1334,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector O</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5526" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector O">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1351,7 +1353,7 @@ $conn->close();
                                     <small>Tribuna II Est, Sector O1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5527" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector O1">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1370,7 +1372,7 @@ $conn->close();
                                     <small>Peluza Nord, Sector F1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5514" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector F1">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1389,7 +1391,7 @@ $conn->close();
                                     <small>Peluza Nord, Sector F</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5515" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector F">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1408,7 +1410,7 @@ $conn->close();
                                     <small>Peluza Nord, Sector G</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5516" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector G">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1427,7 +1429,7 @@ $conn->close();
                                     <small>Peluza Nord, Sector H</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5517" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector H">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1446,7 +1448,7 @@ $conn->close();
                                     <small>Peluza Nord, Sector I</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5518" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector I">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1465,7 +1467,7 @@ $conn->close();
                                     <small>Peluza Nord, Sector I1</small>
                                 </div>
                                 <div class="col-sm-4 col-xs-12 col-even-spacing text-right">
-                                    <a href="selecteaza_locuri.php?sector=5519" class="btn custom-btn btn-xs">Alege locurile</a>
+                                    <a href="javascript:void(0);" class="btn custom-btn btn-xs open-popup" data-sector="Sector I1">Alege locurile</a>
                                 </div>
                             </div>
                         </div>
@@ -1479,14 +1481,23 @@ $conn->close();
     <div id="popupModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="mt-4 ml-1 mb-3">Selectează locurile</h2>
-            <div class="legend">
-            <span class="legend-item"><span class="dot available"></span> Disponibil</span>
-            <span class="legend-item"><span class="dot occupied"></span> Ocupat</span>
-            <span class="legend-item"><span class="dot unavailable"></span> Indisponibil</span>
+            <h2 class="mt-4 ml-5 mb-3">Selectează locurile</h2>
+            <div class="legend text-right">
+                <span class="legend-item"><span class="dot unavailable"></span> Indisponibil</span>
+                <span class="legend-item"><span class="dot occupied"></span> Ocupat</span>
+                <span class="legend-item"><span class="dot available"></span> Disponibil</span>
             </div>
-            <div class="seats-container">
+            <div class="seats-container mt-3 ml-5">
             <!-- Aici vor fi generate locurile -->
+            </div>
+            <div class="field">
+                <div class="field-label">Teren</div>
+                <div class="field-drawing">
+                    <!-- Reprezentarea grafică a terenului -->
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button class="btn custom-btn-order">COMANDĂ</button>
             </div>
         </div>
     </div>
@@ -1693,6 +1704,331 @@ $conn->close();
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            // Funcție pentru a obține datele locurilor din baza de date
+            function fetchSeatsData(sector) {
+                console.log("Fetching data for sector: " + sector); // Verifică sectorul trimis
+                return $.ajax({
+                    url: 'fetch_seats.php', // Scriptul PHP care returnează datele locurilor
+                    method: 'GET',
+                    data: { sector: sector }, // Trimite sectorul selectat ca parametru
+                    dataType: 'json'
+                }).done(function(data) {
+                    console.log("Data received: ", data); // Verifică răspunsul de la server
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("Error fetching data: ", textStatus, errorThrown); // Verifică dacă există erori
+                });
+            }
+
+            // Funcție pentru a genera locurile cu un parametru suplimentar pentru aliniere
+            function generateSeats(container, locuri, alignment) {
+                let previousMargin = 0; // Inițial, nu avem margin-left
+
+                // Grupăm locurile după rânduri
+                const groupedByRow = locuri.reduce((acc, loc) => {
+                    if (!acc[loc.Rand]) {
+                        acc[loc.Rand] = [];
+                    }
+                    acc[loc.Rand].push(loc);
+                    return acc;
+                }, {});
+
+                // Sortăm rândurile
+                const sortedRows = Object.keys(groupedByRow).sort((a, b) => b - a);
+
+                sortedRows.forEach((rowNumber, index) => {
+                    const rowData = groupedByRow[rowNumber];
+                    const row = $('<div class="seat-row"></div>');
+                    const rowNumberElement = $('<div class="row-number">' + rowNumber + '</div>');
+                    row.append(rowNumberElement);
+
+                    rowData.forEach(loc => {
+                        const seatClass = loc.Disponibilitate === 'Disponibil' ? 'available' :
+                                        loc.Disponibilitate === 'Ocupat' ? 'occupied' : 'unavailable';
+                        const seat = $('<span class="dot seat-dot ' + seatClass + '">' + loc.Loc + '</span>');
+                        seat.attr('data-detalii-loc-id', loc.DetaliiLocID); // Adaugă un atribut pentru ID-ul locului
+                        seat.attr('data-categorie', loc.Nume_Categorie); // Adaugă un atribut pentru categoria locului
+                        seat.attr('data-pret', loc.Pret); // Adaugă un atribut pentru prețul locului
+                        row.append(seat);
+                    });
+
+                    // Calcularea margin-left pentru aliniere corectă
+                    let marginLeft = 0;
+                    if (alignment === 'sectorA') {
+                        // Aliniere specifică pentru sectorul A
+                        if (index === 10) {
+                            marginLeft = 10 * 26;
+                        } else if (index === 9) {
+                            marginLeft = 10 * 26 + 26; 
+                        } else if (index === 8) {
+                            marginLeft = 10 * 26 + 2 * 26;
+                        } else if (index === 7) {
+                            marginLeft = 10 * 26 + 3 * 26;
+                        } else if (index === 6) {
+                            marginLeft = 10 * 26 + 4 * 26;
+                        } else if (index === 5) {
+                            marginLeft = 10 * 26 + 5 * 26;
+                        } else if (index === 4) {
+                            marginLeft = 10 * 26 + 6 * 26;
+                        } else if (index === 3) {
+                            marginLeft = 10 * 26 + 7 * 26;
+                        } else if (index === 2) {
+                            marginLeft = 10 * 26 + 8 * 26 - 12;
+                        } else if (index === 1) {
+                            marginLeft = 10 * 26 + 9 * 26 - 12;
+                        } else if (index === 0) {
+                            marginLeft = 10 * 26 + 10 * 26 - 12;
+                        }
+                    } else if (alignment === 'sectorB') {
+                        if (index > 2) {
+                            marginLeft = 0;    
+                        } else if (index === 2 || index === 1 || index === 0) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorC') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        } else if (index === 9 || index === 10) {
+                            marginLeft = 78;
+                        } else if (index === 11) {
+                            marginLeft = 443;
+                        }
+                    } else if (alignment === 'sectorD') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorE') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorE1') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorVIP2') {
+                        if (index === 0) {
+                            marginLeft = 260;
+                        }
+                    } else if (alignment === 'sectorVIP5') {
+                        if (index === 0) {
+                            marginLeft = 597;
+                        }
+                    } else if (alignment === 'sectorJ1') {
+                        if (index === 1) {
+                            marginLeft = 26;
+                        } else if (index === 2) {
+                            marginLeft = 2 * 26;
+                        } else if (index === 3) {
+                            marginLeft = 3 * 26 + 11;
+                        } else if (index === 4) {
+                            marginLeft = 4 * 26 + 11;
+                        } else if (index === 5) {
+                            marginLeft = 5 * 26 + 11;
+                        } else if (index === 6) {
+                            marginLeft = 6 * 26 + 11;
+                        } else if (index === 7) {
+                            marginLeft = 7 * 26 + 11;
+                        } else if (index === 8) {
+                            marginLeft = 8 * 26 + 11;
+                        } else if (index === 9) {
+                            marginLeft = 9 * 26 + 11;
+                        } else if (index === 10) {
+                            marginLeft = 10 * 26 + 11;
+                        } else if (index === 11) {
+                            marginLeft = 11 * 26 + 11;
+                        }
+                    } else if (alignment === 'sectorJ') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorK') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = 249;
+                        } else if (index === 3 || index === 4 || index === 5 || index === 6) {
+                            marginLeft = 10 * 26;
+                        }
+                    } else if (alignment === 'sectorL') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorM') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        } else if (index === 7 || index === 8 || index === 9 || index === 10 || index === 11) {
+                            marginLeft = 78;
+                        }
+                    } else if (alignment === 'sectorN') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorO') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        } else if (index === 7 || index === 8 || index === 9 || index === 10 || index === 11) {
+                            marginLeft = 15 * 26;
+                        }
+                    } else if (alignment === 'sectorO1') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorF1') {
+                        if (index === 1) {
+                            marginLeft = 26;
+                        } else if (index === 2) {
+                            marginLeft = 2 * 26;
+                        } else if (index === 3) {
+                            marginLeft = 3 * 26 + 11;
+                        } else if (index === 4) {
+                            marginLeft = 4 * 26 + 11;
+                        } else if (index === 5) {
+                            marginLeft = 5 * 26 + 11;
+                        } else if (index === 6) {
+                            marginLeft = 6 * 26 + 11;
+                        } else if (index === 7) {
+                            marginLeft = 7 * 26 + 11;
+                        } else if (index === 8) {
+                            marginLeft = 8 * 26 + 11;
+                        } else if (index === 9) {
+                            marginLeft = 9 * 26 + 11;
+                        } else if (index === 10) {
+                            marginLeft = 10 * 26 + 11;
+                        } else if (index === 11) {
+                            marginLeft = 11 * 26 + 11;
+                        }
+                    } else if (alignment === 'sectorF') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorG') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        } else if (index === 7 || index === 8 || index === 9 || index === 10 || index === 11) {
+                            marginLeft = 5 * 26;
+                        }
+                    } else if (alignment === 'sectorH') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    } else if (alignment === 'sectorI') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        } else if (index === 7 || index === 8 || index === 9 || index === 10 || index === 11) {
+                            marginLeft = 3 * 26;
+                        }
+                    } else if (alignment === 'sectorI1') {
+                        if (index === 0 || index === 1 || index === 2) {
+                            marginLeft = marginLeft - 23;
+                        }
+                    }
+
+                    previousMargin = marginLeft; // Actualizează margin-left pentru următorul rând
+                    row.css('margin-left', marginLeft + 'px'); // Aplică margin-left calculat
+                    container.append(row);
+                });
+
+                // Adaugă evenimentul de click pentru a gestiona selecția locurilor
+                $('.seat-dot').on('click', function() {
+                    const selectedSeats = $('.seat-dot.selected').length;
+
+                    // Verifică dacă numărul maxim de selecții este atins
+                    if (!$(this).hasClass('selected') && selectedSeats >= 8) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Limită atinsă',
+                            text: 'Puteți selecta până la maximum 8 locuri.',
+                            confirmButtonText: 'OK'
+                        });
+                        return;
+                    }
+
+                    $(this).toggleClass('selected');
+                });
+            }
+
+            // Populează containerul cu locuri pentru un sector
+            function loadSeatsForSector(sector) {
+                fetchSeatsData(sector).done(function(locuri) {
+                    if (!locuri || locuri.length === 0) {
+                        console.log("No seats data received for sector: " + sector);
+                        return;
+                    }
+                    const seatsContainer = $('.seats-container');
+                    seatsContainer.empty(); // Golește containerul înainte de a adăuga locuri noi
+
+                    // Determină alinierea în funcție de sector
+                    let alignment = 'default';
+                    if (sector === 'Sector A') {
+                        alignment = 'sectorA';
+                    } else if (sector === 'Sector B') {
+                        alignment = 'sectorB';
+                    } else if (sector === 'Sector C') {
+                        alignment = 'sectorC';
+                    } else if (sector === 'Sector D') {
+                        alignment = 'sectorD';
+                    } else if (sector === 'Sector E') {
+                        alignment = 'sectorE';
+                    } else if (sector === 'Sector E1') {
+                        alignment = 'sectorE1';
+                    } else if (sector === 'Sector VIP 2') {
+                        alignment = 'sectorVIP2';
+                    } else if (sector === 'Sector VIP 5') {
+                        alignment = 'sectorVIP5';
+                    } else if (sector === 'Sector J1') {
+                        alignment = 'sectorJ1';
+                    } else if (sector === 'Sector J') {
+                        alignment = 'sectorJ';
+                    } else if (sector === 'Sector K') {
+                        alignment = 'sectorK';
+                    } else if (sector === 'Sector L') {
+                        alignment = 'sectorL';
+                    } else if (sector === 'Sector M') {
+                        alignment = 'sectorM';
+                    } else if (sector === 'Sector N') {
+                        alignment = 'sectorN';
+                    } else if (sector === 'Sector O') {
+                        alignment = 'sectorO';
+                    } else if (sector === 'Sector O1') {
+                        alignment = 'sectorO1';
+                    } else if (sector === 'Sector F1') {
+                        alignment = 'sectorF1';
+                    } else if (sector === 'Sector F') {
+                        alignment = 'sectorF';
+                    } else if (sector === 'Sector G') {
+                        alignment = 'sectorG';
+                    } else if (sector === 'Sector H') {
+                        alignment = 'sectorH';
+                    } else if (sector === 'Sector I') {
+                        alignment = 'sectorI';
+                    } else if (sector === 'Sector I1') {
+                        alignment = 'sectorI1';
+                    }
+                
+                    generateSeats(seatsContainer, locuri, alignment);
+                });
+            }
+
+            // Deschide pop-up-ul când se apasă pe butonul "ALEGE LOCURILE"
+            $(".open-popup").on("click", function() {
+                const sector = $(this).data('sector'); // Obține sectorul din atributul data-sector
+                console.log("Sector selected: " + sector); // Log pentru a verifica sectorul selectat
+                $("#popupModal").css("display", "flex");
+
+                // Resetează selecția locurilor
+                $('.seat-dot').removeClass('selected');
+
+                // Încarcă locurile pentru sectorul selectat
+                loadSeatsForSector(sector);
+            });
+
+            // Închide pop-up-ul când se apasă pe X
+            $(".close").on("click", function() {
+                $("#popupModal").css("display", "none");
+            });
+        });
+
+
+    </script>
     
 </body>
 </html>
