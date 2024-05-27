@@ -2025,10 +2025,41 @@ $conn->close();
             $(".close").on("click", function() {
                 $("#popupModal").css("display", "none");
             });
+
+            // Verifică dacă sunt locuri selectate la click pe butonul "COMANDĂ"
+            $(".custom-btn-order").on("click", function() {
+                const selectedSeatsCounter = $('.seat-dot.selected').length;
+                const selectedSeats = $('.seat-dot.selected');
+                const selectedSeatsIds = selectedSeats.map(function() {
+                    return $(this).data('detalii-loc-id');
+                }).get();
+
+                if (selectedSeatsCounter === 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Niciun loc selectat',
+                        text: 'Trebuie selectat cel puțin un loc.',
+                        confirmButtonText: 'OK'
+                    });
+                    return;
+                }
+
+                // Trimite locurile selectate la server pentru a fi stocate în sesiune
+                $.ajax({
+                    url: 'set_selected_seats.php',
+                    method: 'POST',
+                    data: { seats: selectedSeatsIds },
+                    success: function(response) {
+                        // Redirecționează către pagina de comanda
+                        window.location.href = '../Comanda/comanda.php';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("Error saving selected seats: ", textStatus, errorThrown);
+                    }
+                });
+            });
         });
-
-
     </script>
-    
+
 </body>
 </html>
