@@ -220,6 +220,62 @@ tbody tr:hover {
     margin-left: -132px;
 }
 
+.modalitate-de-plata {
+    margin-top: 75px;
+    margin-left: 149px;
+    background-color: #dddddd;
+    border: 2px solid black;
+    height: 60px;
+    width: 1622px;
+}
+
+.modalitate-de-plata-header {
+    padding: 15px;
+    margin-left: 0px;
+}
+
+.form-check {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-check-label {
+    font-size: 1.1rem;
+}
+
+.form-check-label, .text-muted {
+    margin-left: 20px;
+}
+
+.custom-radio {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.custom-btn {
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: #ED1C24;
+    width: 200px;
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+.custom-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.custom-btn:focus,
+.custom-btn:active {
+    outline: none;
+    box-shadow: none;
+    color: #fff;
+    border: 2px solid #000;
+}
+
 @media (max-width: 768px) {
     .step-progress {
         flex-direction: column;

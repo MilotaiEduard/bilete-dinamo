@@ -18,7 +18,7 @@ CREATE TABLE ResetareParola (
 
 CREATE TABLE Evenimente (
     EvenimentID INT AUTO_INCREMENT PRIMARY KEY,
-    Nume_Eveniment VARCHAR(50),
+    Nume_Eveniment VARCHAR(150),
     Data_Eveniment DATETIME,
     Locatie_Eveniment VARCHAR(50)
 );
