@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 80vh;
+    background-color: #EDEFF4;
+    padding-bottom: 88px;
+}
+
+.navbar-custom {
+    background-color: #ED1C24;
+    border-bottom: 2px solid #000;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+/* Stiluri pentru logo pe ecrane mici (mobile) */
+.navbar-brand img {
+    height: 85px; /* Dimensiune mai mică pentru ecrane mici */
+    width: auto;
+}
+
+/* Ajustează padding-ul pentru navbar pe ecrane mici */
+.navbar-custom .container-fluid {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Aplică stiluri specifice pentru ecrane mai mari */
+@media (min-width: 992px) {
+    .logo-outside {
+        position: absolute;
+        top: -8px; /* Ajustează dacă e necesar */
+        left: 2rem;
+        z-index: 10;
+    }
+
+    .navbar-custom .container-fluid {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    /* Stiluri pentru logo pe ecrane mari */
+    .navbar-brand img {
+        height: 100px; /* Dimensiune mai mare pentru ecrane mari */
+        width: auto;
+    }
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Stilizează link-urile din navbar */
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link:focus::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Inițializează linia sub link */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background-color: #fff; /* Culoarea liniei */
+    transition: width 0.3s ease, left 0.3s ease; /* Animatie pentru a lărgi linia */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.step-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    padding: 20px 0;
+    margin-top: 140px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.step-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #000;
+    margin-right: 10px;
+    border: 2px solid #000;
+}
+
+.step-circle.active {
+    background-color: #ED1C24;
+    color: #fff;
+    border: 2px solid #000;
+}
+
+.step-circle.done {
+    background-color: #00da00;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.step-circle span {
+    display: block;
+    font-weight: bold;
+}
+
+.step-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .step-progress {
+        flex-direction: column;
+    }
+    .step {
+        margin: 10px 0;
+    }
+    h2 {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+h2, .success-p {
+    margin-left: 160px;
+}
+
+.success-p:first-of-type {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.success-p:last-of-type {
+    font-size: 1.2rem;
+    margin-top: -10px;
+}
+
+.success-image {
+    display: block;
+    margin: 0 auto;
+}
+
+.footer-custom {
+    position: relative;
+    bottom: -13px;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 32px;
+    height: 88px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.footer-custom .footer-left a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.footer-custom .footer-left a:hover {
+    color: #ED1C24;
+}
+
+.footer-custom .footer-right a:first-child {
+    margin-right: 40px;
+}
+
+.footer-custom .footer-right a:hover {
+    text-decoration: none;
+}
+
+.first-image {
+    margin-right: 40px;
+}
+
+.footer-left {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.p-copyrights {
+    font-size: 1rem;
+    color: grey;
+}
+
+@media (max-width: 768px) {
+    .footer-custom {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        width: 100%;
+        margin-top: 75px;
+    }
+    .container {
+        margin-top: 155px;
+    }
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        width: 100%; /* Asigură-te că container-ul se întinde pe toată lățimea */
+    }
+    .footer-left {
+        margin-left: 0px;
+    }
+    .footer-left, .footer-right {
+        text-align: center;
+        width: 100%; /* Asigură-te că fiecare coloană se întinde pe toată lățimea */
+    }
+    .footer-right a {
+        display: block; /* Face ca fiecare link să ocupe propria sa linie */
+        margin-bottom: 10px; /* Adaugă spațiu între link-uri */
+    }
+    .footer-right a:first-child {
+        margin-right: 0; /* Elimină margin-ul de la primul link */
+    }
+    .footer-left img {
+        margin-right: 0px;
+    }
+    .footer-right img {
+        margin-bottom: 20px;
+        margin-right: 0px;
+    }
+}

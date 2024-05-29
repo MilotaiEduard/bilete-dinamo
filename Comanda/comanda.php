@@ -297,10 +297,11 @@ $conn->close();
                     </label>
                     <p class="text-muted">Plătești imediat, fără costuri suplimentare.</p>
                 </div>
-                <div class="card-logos ml-5">
-                    <img src="../Imagini/Carduri/Maestro.png" alt="Maestro" height="50">
-                    <img src="../Imagini/Carduri/MasterCard.png" alt="MasterCard" height="50">
+                <div class="card-logos ml-3">
                     <img src="../Imagini/Carduri/Visa.png" alt="Visa" height="50">
+                    <img src="../Imagini/Carduri/MasterCard.png" alt="MasterCard" height="50">
+                    <img src="../Imagini/Carduri/American-Express.png" alt="American Express" height="50">
+                    <img src="../Imagini/Carduri/UnionPay.png" alt="UnionPay" height="50">
                 </div>
             </div>
         </div>
