@@ -8,6 +8,9 @@ include '../db_connect.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 // Verifica daca campul email este gol
 if (empty($_POST['email'])) {
     $_SESSION['error'] = 'Vă rugăm să completați câmpul pentru email!';
@@ -55,16 +58,16 @@ $mail = new PHPMailer(true);
 try {
     // Setari server
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = $_ENV['SMTP_HOST'];;
     $mail->SMTPAuth = true;
-    $mail->Username = 'edi.milotai@gmail.com'; // SMTP username
-    $mail->Password = 'gxlv ysnd yrbg jcvf'; // SMTP password
+    $mail->Username = $_ENV['SMTP_USERNAME']; // SMTP username
+    $mail->Password = $_ENV['SMTP_PASSWORD']; // SMTP password
     $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587; // Port pentru TLS/STARTTLS
     $mail->CharSet = 'UTF-8';
 
     // Destinatari
-    $mail->setFrom('no-reply@bilete-dinamo.com', 'no-reply@bilete-dinamo.com');
+    $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
     $mail->addAddress($email); // Adauga destinatarul
 
     // Content

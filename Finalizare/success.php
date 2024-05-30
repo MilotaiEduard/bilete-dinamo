@@ -2,6 +2,10 @@
 
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Verifică dacă utilizatorul este autentificat
 if (!isset($_SESSION['user_id'])) {
     header('Location: /Autentificare/autentificare.php');
@@ -12,6 +16,80 @@ if ($_SESSION['can_access_finalizare'] != true || !isset($_SESSION['can_access_f
     header('Location: ../MeniuPrincipal/meniu_principal.php');
     exit();
 }
+
+include '../db_connect.php';
+require '../vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Stripe\Stripe;
+use Stripe\Checkout\Session as CheckoutSession;
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+$stripeSecretKey = $_ENV['STRIPE_SECRET_KEY'];
+\Stripe\Stripe::setApiKey($stripeSecretKey);
+
+if (!isset($_GET['session_id'])) {
+    die('Missing session ID.');
+}
+
+$session_id = $_GET['session_id'];
+
+try {
+    $session = CheckoutSession::retrieve($session_id);
+} catch (Exception $e) {
+    die('Error retrieving Stripe session: ' . $e->getMessage());
+}
+
+$sql = "SELECT Nume_Eveniment FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Preia numele evenimentului
+    $row = $result->fetch_assoc();
+    $numeEveniment = $row['Nume_Eveniment'];
+} else {
+    $numeEveniment = "Nu există evenimente disponibile.";
+}
+
+$email = $session->customer_details->email;
+$totalPret = $session->amount_total / 100;
+
+// Funcția de trimitere a emailului
+function sendConfirmationEmail($email, $numeEveniment, $totalPret) {
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configurări server
+        $mail->isSMTP();
+        $mail->Host       = $_ENV['SMTP_HOST'];
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $_ENV['SMTP_USERNAME'];
+        $mail->Password   = $_ENV['SMTP_PASSWORD'];
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+        $mail->CharSet = 'UTF-8';
+
+        // Destinatari
+        $mail->setFrom($_ENV['SMTP_FROM'], $_ENV['SMTP_FROM_NAME']);
+        $mail->addAddress($email);
+
+        // Conținut
+        $mail->isHTML(true);
+        $mail->Subject = 'Confirmarea tranzacției';
+        $mail->Body    = "Bună ziua,<br><br>Vă mulțumim pentru achiziționarea biletelor la evenimentul <b>$numeEveniment</b>. Suma totală achitată este de <b>$totalPret RON</b>.<br><br>Vă așteptăm la eveniment!<br><br>Cu respect,<br>Echipa Dinamo București";
+
+        $mail->send();
+        error_log("Email sent successfully to: " . $email);
+    } catch (Exception $e) {
+        error_log("Mesajul nu a putut fi trimis. Eroare Mailer: {$mail->ErrorInfo}");
+    }
+}
+
+// Apelează funcția de trimitere a emailului
+sendConfirmationEmail($email, $numeEveniment, $totalPret);
 
 ?>
 
