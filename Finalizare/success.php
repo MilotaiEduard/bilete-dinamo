@@ -44,15 +44,20 @@ try {
     die('Error retrieving Stripe session: ' . $e->getMessage());
 }
 
-$sql = "SELECT Nume_Eveniment FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1";
+// PreluareA ultimului eveniment adăugat
+$sql = "SELECT Nume_Eveniment, Data_Eveniment, Locatie_Eveniment FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Preia numele evenimentului
+    // Preia datele evenimentului
     $row = $result->fetch_assoc();
     $numeEveniment = $row['Nume_Eveniment'];
+    $dataEveniment = $row['Data_Eveniment'];
+    $locatieEveniment = $row['Locatie_Eveniment'];
 } else {
     $numeEveniment = "Nu există evenimente disponibile.";
+    $dataEveniment = "";
+    $locatieEveniment = "";
 }
 
 $selectedSeats = $_SESSION['selected_seats'];
@@ -179,7 +184,7 @@ function generateBillPDF($email, $numeEveniment, $totalPret, $customerDetails, $
     $pdf->Cell(0, 10, 'IBAN: RO49AAAA1B31007593840000', 0, 1, 'R');
 
     $pdf->SetXY(10, 266); // Setăm cursorul mai sus pentru a încăpea toate informațiile
-    $pdf->Cell(60, 10, 'CIF: RO1609018', 0, 0, 'L');
+    $pdf->Cell(60, 10, 'CIF: RO13699971', 0, 0, 'L');
     $pdf->Cell(0, 10, 'SWIFT: AAAAROBU', 0, 1, 'R');
 
     $pdf->Output('/tmp/factura.pdf', 'F'); // Save the PDF to /tmp
@@ -196,30 +201,103 @@ $customerDetails = $result->fetch_assoc();
 // Generare PDF pentru factură
 generateBillPDF($email, $numeEveniment, $totalPret, $customerDetails, $detaliiBilete);
 
-// Funcția de generare a biletului PDF
-function generateTicketPDF($numeEveniment, $totalPret) {
+// Funcția de generare a biletului PDF pentru un loc specific
+function generateTicketPDF($numeEveniment, $dataEveniment, $locatieEveniment, $bilet, $index, $customerDetails) {
     $pdf = new TCPDF();
     $pdf->AddPage();
+    
+    // Convertire data eveniment pentru a afișa în formatul dd/mm/yyyy H:i
+    $dataEveniment = date('d/m/Y H:i', strtotime($dataEveniment));
+
+    // Setare font și dimensiune pentru numele evenimentului
+    $pdf->SetFont('dejavusans', 'B', 14);
+    $pdf->SetXY(10, 20); // Mutăm cursorul pentru numele evenimentului
+    $pdf->Cell(0, 10, $numeEveniment, 0, 1, 'L'); // Text aliniat la stânga
+
+    // Adăugare cod QR în dreapta pe același rând cu numele evenimentului
+    $qrCodePath = '../Imagini/QR_Code.png';
+    $pdf->Image($qrCodePath, 166, 22, 35, 35, 'PNG'); // X, Y, Width, Height, Image type
+
+    // Setare font și dimensiune pentru data evenimentului
     $pdf->SetFont('dejavusans', '', 12);
+    $pdf->SetXY(10, 29); // Mutăm cursorul sub numele evenimentului
+    $pdf->Cell(0, 10, $dataEveniment, 0, 1, 'L'); // Text aliniat la stânga
 
-    // Adăugare logo în colțul stânga sus
-    $logo = '../Imagini/LogoDinamoBucuresti.png'; // Calea către logo-ul tău
-    $pdf->Image($logo, 10, 10, 50, '', 'PNG'); // X, Y, Width, Height, Image type
+    // Setare font și dimensiune pentru locația evenimentului
+    $pdf->SetFont('dejavusans', '', 12);
+    $pdf->SetXY(10, 36); // Mutăm cursorul sub data evenimentului
+    $pdf->Cell(0, 10, $locatieEveniment, 0, 1, 'L'); // Text aliniat la stânga
 
-    // Setare conținut text
-    $pdf->SetXY(10, 60); // Mutăm cursorul după logo
-    $pdf->Write(0, "Bilet pentru evenimentul:", '', 0, '', true, 0, false, false, 0);
-    $pdf->Write(0, $numeEveniment, '', 0, '', true, 0, false, false, 0);
-    $pdf->Write(0, "Suma totală achitată: " . $totalPret . " RON", '', 0, '', true, 0, false, false, 0);
+    // Afișare nume categorie, sector, rând și loc pe același rând și preț bilet în dreapta
+    $pdf->SetXY(10, 60);
+    $pdf->SetFont('dejavusans', 'B', 12);
+    $pdf->Cell(120, 10, $bilet['Nume_Categorie'] . " " . $bilet['Sector'] . " Rand " . $bilet['Rand'] . " Loc " . $bilet['Loc'], 0, 0, 'L');
+    $pdf->Cell(0, 10, "Preț bilet: " . $bilet['Pret'] . " RON", 0, 1, 'R');
 
-    $pdf->Output('/tmp/bilet.pdf', 'F'); // Save the PDF to /tmp
+    // Adăugare detalii deținător
+    $pdf->Ln(10); // Spațiu între secțiuni
+    $pdf->SetFont('dejavusans', 'B', 12);
+    $pdf->Cell(0, 10, "Deținător", 0, 1, 'L');
+    
+    // Nume și prenume deținător
+    $pdf->SetFont('dejavusans', '', 12);
+    $pdf->Cell(0, 10, "Nume și prenume: " . $customerDetails['PersoanaContact_Nume'] . " " . $customerDetails['PersoanaContact_Prenume'], 0, 1, 'L');
+    
+    // Domiciliu deținător
+    $pdf->Cell(0, 10, "Domiciliu: " . $customerDetails['Judet'], 0, 1, 'L');
+
+    // Adăugare secțiune Informații
+    $pdf->Ln(10); // Spațiu între secțiuni
+    $pdf->SetFont('dejavusans', 'B', 12);
+    $pdf->Cell(0, 10, "Informații", 0, 1, 'L');
+    $pdf->Ln(4);
+
+    // Textul specificat sub secțiunea Informații
+    $pdf->SetFont('dejavusans', '', 8);
+    $pdf->MultiCell(0, 5, "Acest bilet este valabil însoțit de un act de identitate cu poză (CI, Pașaport, Permis conducere). Prezentarea la locație doar cu acest bilet, neînsoțit de un act de identitate, va împiedica intrarea la eveniment.", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Acest bilet este unic și netransmisibil, înstrăinarea lui poate restricționa accesul dumneavoastră în locație. O dată folosit, acest bilet nu mai este valabil.", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Accesul copiilor până în 14 ani se face pe bază de bilet și însoțit de un adult.", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Falsificarea biletelor se pedepsește conform legii.", 0, 'L', 0, 1);
+    
+    // Adăugare text suplimentar cu tab
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Suporterii sunt obligați să își ocupe locul, rândul, sectorul indicat pe bilet.", 0, 'L', 0, 1);
+
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Pe stadion, spectatorilor le este INTERZIS să intre cu următoarele obiecte și în următoarele situații:", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "         a. Cu materiale pirotehnice de orice natură (artificii, torțe, fumigene, etc.);", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "         b. Sub influența alcoolului;", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "         c. Cu arme albe (cuțite, șurubelnițe, metale ascuțite, lacăte, etc.);", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "         d. Cu monede, brichete, umbrele, mănunchiuri de chei, mai multe brelocuri, etc.;", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "         e. Cu steaguri și bețe din plastic cu diametrul mai mare de 16 mm;", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "         f. Cu materiale de propagandă care incită la denigrarea țărilor, xenofobie, ură națională, rasială, de clasă ori religioasă, la discriminări de orice fel și la violență publică;", 0, 'L', 0, 1);
+    $pdf->Ln(5); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Organizator: FC Dinamo RO13699971", 0, 'L', 0, 1);
+    $pdf->Ln(3); // Spațiu între paragrafe
+    $pdf->MultiCell(0, 5, "Contact bilete-dinamo.ro: +40 316 406 974", 0, 'L', 0, 1);
+
+    $filename = "/tmp/bilet_$index.pdf";
+    $pdf->Output($filename, 'F'); // Save the PDF to /tmp
+    return $filename;
 }
 
-// Generare PDF pentru bilet
-generateTicketPDF($numeEveniment, $totalPret);
+// Generare PDF pentru bilete
+$biletePDF = [];
+foreach ($detaliiBilete as $index => $bilet) {
+    $biletePDF[] = generateTicketPDF($numeEveniment, $dataEveniment, $locatieEveniment, $bilet, $index + 1, $customerDetails);
+}
 
 // Funcția de trimitere a emailului
-function sendConfirmationEmail($email, $numeEveniment, $totalPret) {
+function sendConfirmationEmail($email, $numeEveniment, $totalPret, $biletePDF) {
     $mail = new PHPMailer(true);
 
     try {
@@ -244,14 +322,18 @@ function sendConfirmationEmail($email, $numeEveniment, $totalPret) {
 
         // Atașează fișiere PDF
         $mail->addAttachment('/tmp/factura.pdf');
-        $mail->addAttachment('/tmp/bilet.pdf');
+        foreach ($biletePDF as $pdf) {
+            $mail->addAttachment($pdf);
+        }
 
         $mail->send();
         error_log("Email sent successfully to: " . $email);
 
         // Șterge fișierele PDF după trimiterea emailului
         unlink('/tmp/factura.pdf');
-        unlink('/tmp/bilet.pdf');
+        foreach ($biletePDF as $pdf) {
+            unlink($pdf);
+        }
 
     } catch (Exception $e) {
         error_log("Mesajul nu a putut fi trimis. Eroare Mailer: {$mail->ErrorInfo}");
@@ -259,9 +341,10 @@ function sendConfirmationEmail($email, $numeEveniment, $totalPret) {
 }
 
 // Apelează funcția de trimitere a emailului
-sendConfirmationEmail($email, $numeEveniment, $totalPret);
+sendConfirmationEmail($email, $numeEveniment, $totalPret, $biletePDF);
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
