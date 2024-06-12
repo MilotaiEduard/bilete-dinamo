@@ -68,7 +68,6 @@ CREATE TABLE Vanzari (
     FOREIGN KEY (UtilizatorID) REFERENCES Utilizatori(UtilizatorID),
     FOREIGN KEY (BiletID) REFERENCES Bilete(BiletID),
     FOREIGN KEY (EvenimentID) REFERENCES Evenimente(EvenimentID)
-
 );
 
 CREATE TABLE Facturi (

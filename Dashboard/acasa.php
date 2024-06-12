@@ -27,6 +27,13 @@ $stmt->execute();
 $stmt->bind_result($nume_admin);
 $stmt->fetch();
 $stmt->close();
+
+$totalUtilizatori = $conn->query("SELECT COUNT(*) FROM Utilizatori WHERE Rol='user'")->fetch_row()[0];
+$totalEvenimente = $conn->query("SELECT COUNT(*) FROM Evenimente")->fetch_row()[0];
+$totalBileteVandute = $conn->query("SELECT COUNT(*) FROM Vanzari")->fetch_row()[0];
+$totalVenituri = $conn->query("SELECT SUM(Suma_Platita) FROM Plati")->fetch_row()[0];
+$totalFacturiEmise = $conn->query("SELECT COUNT(*) FROM Facturi")->fetch_row()[0];
+
 $conn->close();
 
 ?>
@@ -50,6 +57,7 @@ $conn->close();
             <img src="../Imagini/LogoDinamoBucuresti.png" alt="Logo">
             <h4>Bine ai venit, <b><?php echo htmlspecialchars($nume_admin); ?></b>!</h4>
             <a href="/Dashboard/acasa.php" class="active"><i class="fas fa-home"></i> Acasă</a>
+            <a href="/Dashboard/inregistrare_evenment.php"><i class="fas fa-calendar-alt"></i> Eveniment Nou</a>
             <a href="/Dashboard/rapoarte.php"><i class="fas fa-chart-bar"></i> Rapoarte</a>
             <a href="/Dashboard/grafice.php"><i class="fas fa-chart-line"></i> Grafice</a>
         </div>
@@ -58,8 +66,52 @@ $conn->close();
             <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Deconectare</a>
         </div>
     </div>
-    <div class="content">
-        
+    <div class="content" class="<?php if(isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark') { echo 'dark-mode'; } ?>">
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="card-content">
+                <h4><?php echo $totalUtilizatori; ?></h4>
+                <p>Total Utilizatori</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="card-content">
+                <h4><?php echo $totalEvenimente; ?></h4>
+                <p>Total Evenimente</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="card-content">
+                <h4><?php echo $totalBileteVandute; ?></h4>
+                <p>Total Bilete Vândute</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-content">
+                <h4><?php echo $totalVenituri; ?> RON</h4>
+                <p>Total Venituri</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+            <div class="card-content">
+                <h4><?php echo $totalFacturiEmise; ?></h4>
+                <p>Total Facturi Emise</p>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
