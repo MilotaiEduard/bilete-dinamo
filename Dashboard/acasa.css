@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-color: #EDEFF4;
+    padding-bottom: 88px;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #ED1C24;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar .active {
+    background-color: #b52025;
+    border-radius: 5px;
+}
+
+.sidebar .top-section img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.sidebar .top-section h4 {
+    margin-bottom: 50px;
+    padding-left: 10px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.sidebar a:hover {
+    background-color: #b52025;
+    border-radius: 5px;
+}
+
+.sidebar .bottom-section {
+    margin-top: auto;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #212121;
+    color: #fff;
+}
+
+.sidebar.dark-mode {
+    background-color: #171717;
+}
+
+.sidebar.dark-mode a {
+    color: white;
+}
+
+.sidebar.dark-mode a:hover {
+    background-color: #333333;
+}
+
+.sidebar.dark-mode .active {
+    background-color: #333333;
+    border-radius: 5px;
+}
+
+body.dark-mode .sidebar .top-section img {
+    filter: grayscale(100%);
+}

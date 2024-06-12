@@ -8,6 +8,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Verifică rolul utilizatorului și redirecționează adminii către dashboard
+if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin') {
+    header('Location: ../Dashboard/acasa.php');
+    exit();
+}
+
 include '../db_connect.php';
 
 $error = '';

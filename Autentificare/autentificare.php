@@ -18,14 +18,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = 'Vă rugăm să completați câmpul pentru parolă!';
     } else {
         // Dacă ambele câmpuri sunt completate, verificăm credențialele
-        $sql = "SELECT UtilizatorID, Parola FROM Utilizatori WHERE Email = '$email'";
+        $sql = "SELECT UtilizatorID, Parola, Rol FROM Utilizatori WHERE Email = '$email'";
         $result = mysqli_query($conn, $sql);
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             if (password_verify($parola, $row['Parola'])) {
                 // Parola este corectă, autentificarea a reușit
                 $_SESSION['user_id'] = $row['UtilizatorID']; // Stocăm ID-ul utilizatorului în sesiune
-                header('Location: ../MeniuPrincipal/meniu_principal.php'); // Redirecționăm utilizatorul
+                $_SESSION['rol'] = $row['Rol']; // Stocăm rolul utilizatorului în sesiune
+
+                if ($row['Rol'] == 'admin') {
+                    header('Location: ../Dashboard/acasa.php'); // Redirecționăm adminul
+                } else {
+                    header('Location: ../MeniuPrincipal/meniu_principal.php'); // Redirecționăm utilizatorul normal
+                }
                 exit();
             } else {
                 $error = 'Email sau parolă incorectă.';
