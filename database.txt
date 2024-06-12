@@ -72,7 +72,6 @@ CREATE TABLE Vanzari (
 
 CREATE TABLE Facturi (
     FacturaID INT AUTO_INCREMENT PRIMARY KEY,
-    Numar_Factura VARCHAR(50) UNIQUE,
     Data_Factura DATETIME,
     UtilizatorID INT,
     PlataID INT,

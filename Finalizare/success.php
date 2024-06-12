@@ -50,13 +50,14 @@ try {
     die('Error retrieving Stripe session: ' . $e->getMessage());
 }
 
-// PreluareA ultimului eveniment adăugat
-$sql = "SELECT Nume_Eveniment, Data_Eveniment, Locatie_Eveniment FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1";
+// Preluarea ultimului eveniment adăugat
+$sql = "SELECT EvenimentID, Nume_Eveniment, Data_Eveniment, Locatie_Eveniment FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Preia datele evenimentului
     $row = $result->fetch_assoc();
+    $evenimentID = $row['EvenimentID'];
     $numeEveniment = $row['Nume_Eveniment'];
     $dataEveniment = $row['Data_Eveniment'];
     $locatieEveniment = $row['Locatie_Eveniment'];
@@ -72,7 +73,7 @@ if (!empty($selectedSeats)) {
     $placeholders = implode(',', array_fill(0, count($selectedSeats), '?'));
     $types = str_repeat('i', count($selectedSeats));
     
-    $sqlBilete = "SELECT DetaliiLocuri.Sector, DetaliiLocuri.Rand, DetaliiLocuri.Loc, CategoriiLocuri.Nume_Categorie, CategoriiLocuri.Pret
+    $sqlBilete = "SELECT DetaliiLocuri.DetaliiLocID, DetaliiLocuri.Sector, DetaliiLocuri.Rand, DetaliiLocuri.Loc, CategoriiLocuri.Nume_Categorie, CategoriiLocuri.Pret
                 FROM DetaliiLocuri
                 JOIN CategoriiLocuri ON DetaliiLocuri.CategorieID = CategoriiLocuri.CategorieID
                 WHERE DetaliiLocuri.DetaliiLocID IN ($placeholders)";
@@ -91,6 +92,60 @@ if (!empty($selectedSeats)) {
 
 $email = $session->customer_details->email;
 $totalPret = $session->amount_total / 100;
+
+// Begin transaction
+$conn->begin_transaction();
+
+try {
+    // Inserare în tabelul Plati
+    $sqlPlata = "INSERT INTO Plati (Suma_Platita, Data_Plata, UtilizatorID, EvenimentID) VALUES (?, NOW(), ?, ?)";
+    $stmtPlata = $conn->prepare($sqlPlata);
+    $stmtPlata->bind_param('dii', $totalPret, $_SESSION['user_id'], $evenimentID);
+    $stmtPlata->execute();
+    $plataID = $stmtPlata->insert_id;
+    $stmtPlata->close();
+
+    // Inserare în tabelul Bilete și actualizare în DetaliiLocuri
+    $bileteID = [];
+    foreach ($detaliiBilete as $bilet) {
+        $sqlBilet = "INSERT INTO Bilete (DetaliiLocID, EvenimentID) VALUES (?, ?)";
+        $stmtBilet = $conn->prepare($sqlBilet);
+        $stmtBilet->bind_param('ii', $bilet['DetaliiLocID'], $evenimentID);
+        $stmtBilet->execute();
+        $bileteID[] = $stmtBilet->insert_id; // Stocăm BiletID
+        $stmtBilet->close();
+
+        // Actualizare disponibilitate loc
+        $sqlUpdateLoc = "UPDATE DetaliiLocuri SET Disponibilitate = 'Ocupat' WHERE DetaliiLocID = ?";
+        $stmtUpdateLoc = $conn->prepare($sqlUpdateLoc);
+        $stmtUpdateLoc->bind_param('i', $bilet['DetaliiLocID']);
+        $stmtUpdateLoc->execute();
+        $stmtUpdateLoc->close();
+    }
+
+    // Inserare în tabelul Vanzari pentru fiecare bilet
+    foreach ($bileteID as $biletID) {
+        $sqlVanzare = "INSERT INTO Vanzari (Data_Vanzare, UtilizatorID, BiletID, EvenimentID) VALUES (NOW(), ?, ?, ?)";
+        $stmtVanzare = $conn->prepare($sqlVanzare);
+        $stmtVanzare->bind_param('iii', $_SESSION['user_id'], $biletID, $evenimentID);
+        $stmtVanzare->execute();
+        $stmtVanzare->close();
+    }
+
+    // Inserare în tabelul Facturi
+    $sqlFactura = "INSERT INTO Facturi (Data_Factura, UtilizatorID, PlataID, EvenimentID) VALUES (NOW(), ?, ?, ?)";
+    $stmtFactura = $conn->prepare($sqlFactura);
+    $stmtFactura->bind_param('iii', $_SESSION['user_id'], $plataID, $evenimentID);
+    $stmtFactura->execute();
+    $facturaID = $stmtFactura->insert_id;
+    $stmtFactura->close();
+
+    $conn->commit();
+
+} catch (Exception $e) {
+    $conn->rollback();
+    die('Error: ' . $e->getMessage());
+}
 
 // Funcția de generare a PDF-ului
 function generateBillPDF($email, $numeEveniment, $totalPret, $customerDetails, $detaliiBilete) {
@@ -129,7 +184,7 @@ function generateBillPDF($email, $numeEveniment, $totalPret, $customerDetails, $
     // Titlul "Factura #1"
     $pdf->SetFont('dejavusans', 'B', 14);
     $pdf->SetXY(0, 90); // Poziționare pe centru sub detaliile clientului
-    $pdf->Cell(0, 10, 'Factura #1', 0, 1, 'C');
+    $pdf->Cell(0, 10, 'Factura #001', 0, 1, 'C');
 
     // Tabelul cu 3 coloane: Denumire, Cant., Pret unitar
     $pdf->SetFont('dejavusans', 'B', 12);

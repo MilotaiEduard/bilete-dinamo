@@ -34,8 +34,20 @@ $totalBileteVandute = $conn->query("SELECT COUNT(*) FROM Vanzari")->fetch_row()[
 $totalVenituri = $conn->query("SELECT SUM(Suma_Platita) FROM Plati")->fetch_row()[0];
 $totalFacturiEmise = $conn->query("SELECT COUNT(*) FROM Facturi")->fetch_row()[0];
 
+$utilizatoriRol = $conn->query("
+    SELECT Rol, COUNT(*) as numar
+    FROM Utilizatori
+    GROUP BY Rol
+")->fetch_all(MYSQLI_ASSOC);
+
 $conn->close();
 
+$roluri = [];
+$numarUtilizatori = [];
+foreach ($utilizatoriRol as $row) {
+    $roluri[] = $row['Rol'];
+    $numarUtilizatori[] = $row['numar'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +60,7 @@ $conn->close();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/Dashboard/acasa.css">
 </head>
 
@@ -66,54 +79,67 @@ $conn->close();
             <a href="../logout.php"><i class="fas fa-sign-out-alt"></i> Deconectare</a>
         </div>
     </div>
-    <div class="content" class="<?php if(isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark') { echo 'dark-mode'; } ?>">
-        <div class="card">
-            <div class="card-icon">
-                <i class="fas fa-users"></i>
+    <div class="content">
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="card-content">
+                    <h4><?php echo $totalUtilizatori; ?></h4>
+                    <p>Total Utilizatori</p>
+                </div>
             </div>
-            <div class="card-content">
-                <h4><?php echo $totalUtilizatori; ?></h4>
-                <p>Total Utilizatori</p>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="card-content">
+                    <h4><?php echo $totalEvenimente; ?></h4>
+                    <p>Total Evenimente</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="card-content">
+                    <h4><?php echo $totalBileteVandute; ?></h4>
+                    <p>Total Bilete Vândute</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="card-content">
+                    <h4><?php echo $totalVenituri; ?> RON</h4>
+                    <p>Total Venituri</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-file-invoice"></i>
+                </div>
+                <div class="card-content">
+                    <h4><?php echo $totalFacturiEmise; ?></h4>
+                    <p>Total Facturi Emise</p>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-icon">
-                <i class="fas fa-calendar-alt"></i>
+        <!-- Container pentru grafice -->
+        <div class="charts-container">
+            <!-- Card pentru graficul bar chart -->
+            <div class="card" style="width: 946px; height: 705px; padding: 30px; margin-top: 10px;">
+                <canvas id="utilizatoriChart"></canvas>
             </div>
-            <div class="card-content">
-                <h4><?php echo $totalEvenimente; ?></h4>
-                <p>Total Evenimente</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-icon">
-                <i class="fas fa-ticket-alt"></i>
-            </div>
-            <div class="card-content">
-                <h4><?php echo $totalBileteVandute; ?></h4>
-                <p>Total Bilete Vândute</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-icon">
-                <i class="fas fa-dollar-sign"></i>
-            </div>
-            <div class="card-content">
-                <h4><?php echo $totalVenituri; ?> RON</h4>
-                <p>Total Venituri</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-icon">
-                <i class="fas fa-file-invoice"></i>
-            </div>
-            <div class="card-content">
-                <h4><?php echo $totalFacturiEmise; ?></h4>
-                <p>Total Facturi Emise</p>
+            <!-- Card pentru graficul pie chart -->
+            <div class="card" style="width: 624px; height: 705px; padding: 30px; margin-top: 10px;">
+                <canvas id="roluriChart"></canvas>
             </div>
         </div>
     </div>
-
+            
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -149,6 +175,58 @@ $conn->close();
                     document.getElementById('mode-icon').classList.add('fa-moon');
                 }
             }
+
+            // Configurare Chart.js pentru utilizatori
+            var ctx = document.getElementById('utilizatoriChart').getContext('2d');
+            var utilizatoriChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: <?php echo json_encode($roluri); ?>,
+                    datasets: [{
+                        label: 'Număr Utilizatori',
+                        data: <?php echo json_encode($numarUtilizatori); ?>,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Configurare Chart.js pentru roluri
+            var ctx2 = document.getElementById('roluriChart').getContext('2d');
+            var roluriChart = new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: <?php echo json_encode($roluri); ?>,
+                    datasets: [{
+                        label: 'Distribuția Rolurilor',
+                        data: <?php echo json_encode($numarUtilizatori); ?>,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
         });
     </script>
     

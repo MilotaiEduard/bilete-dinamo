@@ -61,10 +61,21 @@ body {
 .content {
     margin-top: 25px;
     margin-left: 250px;
+    height: 925px;
     padding: 20px;
     display: flex;
+    flex-direction: column;
+}
+
+.cards-container {
+    display: flex;
     flex-direction: row;
-    justify-content: center;
+}
+
+.charts-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
 }
 
 .card {
@@ -75,7 +86,7 @@ body {
     height: 100px;
     padding: 20px;
     margin-bottom: 20px;
-    margin-right: 30px;
+    margin-left: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -100,11 +111,13 @@ body {
     align-items: flex-start;
     padding: 10px;
 }
+
 .card-content h4 {
     margin: 0;
     font-size: 24px;
     font-weight: bold;
 }
+
 .card-content p {
     margin: 0;
     color: #666;
