@@ -64,3 +64,9 @@ a:hover {
     background-color: #000;
     color: #fff;
 }
+
+.custom-btn:active,
+.custom-btn:focus {
+    outline: none;
+    box-shadow: none;
+}

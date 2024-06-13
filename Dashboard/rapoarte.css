@@ -64,6 +64,56 @@ body {
     width: 100%;
 }
 
+.card {
+    width: 380px;
+    height: 340px;
+    padding: 20px;
+    margin: 25px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title {
+    margin-left: -53px;
+    margin-bottom: 30px;
+}
+
+#reportForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-btn {
+    background-color: #ED1C24;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
+    width: 150px;
+    margin: 35px auto 0;
+}
+
+.custom-btn:hover {
+    background-color: #000;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.custom-btn:focus,
+.custom-btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
 /* Dark mode styles */
 body.dark-mode {
     background-color: #212121;
@@ -89,4 +139,17 @@ body.dark-mode {
 
 body.dark-mode .sidebar .top-section img {
     filter: grayscale(100%);
+}
+
+body.dark-mode .content .card {
+    background-color: #171717;
+    color: #fff;
+}
+
+body.dark-mode .custom-btn {
+    background-color: #333333;
+}
+
+body.dark-mode .custom-btn:hover {
+    background-color: #272727;
 }

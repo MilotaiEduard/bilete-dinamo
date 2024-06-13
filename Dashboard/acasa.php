@@ -34,19 +34,35 @@ $totalBileteVandute = $conn->query("SELECT COUNT(*) FROM Vanzari")->fetch_row()[
 $totalVenituri = $conn->query("SELECT SUM(Suma_Platita) FROM Plati")->fetch_row()[0];
 $totalFacturiEmise = $conn->query("SELECT COUNT(*) FROM Facturi")->fetch_row()[0];
 
-$utilizatoriRol = $conn->query("
-    SELECT Rol, COUNT(*) as numar
-    FROM Utilizatori
-    GROUP BY Rol
+// Obține datele pentru grafice
+$venituriEvenimente = $conn->query("
+    SELECT E.Nume_Eveniment, SUM(P.Suma_Platita) as total_venituri
+    FROM Evenimente E
+    LEFT JOIN Plati P ON E.EvenimentID = P.EvenimentID
+    GROUP BY E.Nume_Eveniment
+")->fetch_all(MYSQLI_ASSOC);
+
+$locuriDisponibilitate = $conn->query("
+    SELECT Disponibilitate, COUNT(*) as numar_locuri
+    FROM DetaliiLocuri
+    GROUP BY Disponibilitate
 ")->fetch_all(MYSQLI_ASSOC);
 
 $conn->close();
 
-$roluri = [];
-$numarUtilizatori = [];
-foreach ($utilizatoriRol as $row) {
-    $roluri[] = $row['Rol'];
-    $numarUtilizatori[] = $row['numar'];
+// Formatează datele pentru grafice
+$evenimentNume = [];
+$totalVenituriArr = [];
+foreach ($venituriEvenimente as $row) {
+    $evenimentNume[] = $row['Nume_Eveniment'];
+    $totalVenituriArr[] = $row['total_venituri'];
+}
+
+$disponibilitateLocuri = [];
+$numarLocuri = [];
+foreach ($locuriDisponibilitate as $row) {
+    $disponibilitateLocuri[] = $row['Disponibilitate'];
+    $numarLocuri[] = $row['numar_locuri'];
 }
 ?>
 
@@ -131,11 +147,11 @@ foreach ($utilizatoriRol as $row) {
         <div class="charts-container">
             <!-- Card pentru graficul bar chart -->
             <div class="card" style="width: 946px; height: 705px; padding: 30px; margin-top: 10px;">
-                <canvas id="utilizatoriChart"></canvas>
+                <canvas id="venituriChart"></canvas>
             </div>
             <!-- Card pentru graficul pie chart -->
             <div class="card" style="width: 624px; height: 705px; padding: 30px; margin-top: 10px;">
-                <canvas id="roluriChart"></canvas>
+                <canvas id="locuriChart"></canvas>
             </div>
         </div>
     </div>
@@ -176,15 +192,15 @@ foreach ($utilizatoriRol as $row) {
                 }
             }
 
-            // Configurare Chart.js pentru utilizatori
-            var ctx = document.getElementById('utilizatoriChart').getContext('2d');
-            var utilizatoriChart = new Chart(ctx, {
+            // Configurare Chart.js pentru veniturile evenimentelor
+            var ctx = document.getElementById('venituriChart').getContext('2d');
+            var venituriChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: <?php echo json_encode($roluri); ?>,
+                    labels: <?php echo json_encode($evenimentNume); ?>,
                     datasets: [{
-                        label: 'Număr Utilizatori',
-                        data: <?php echo json_encode($numarUtilizatori); ?>,
+                        label: 'Venituri Totale',
+                        data: <?php echo json_encode($totalVenituriArr); ?>,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
@@ -203,15 +219,15 @@ foreach ($utilizatoriRol as $row) {
                 }
             });
 
-            // Configurare Chart.js pentru roluri
-            var ctx2 = document.getElementById('roluriChart').getContext('2d');
-            var roluriChart = new Chart(ctx2, {
+            // Configurare Chart.js pentru locuri
+            var ctx2 = document.getElementById('locuriChart').getContext('2d');
+            var locuriChart = new Chart(ctx2, {
                 type: 'pie',
                 data: {
-                    labels: <?php echo json_encode($roluri); ?>,
+                    labels: <?php echo json_encode($disponibilitateLocuri); ?>,
                     datasets: [{
-                        label: 'Distribuția Rolurilor',
-                        data: <?php echo json_encode($numarUtilizatori); ?>,
+                        label: 'Distribuția Locurilor',
+                        data: <?php echo json_encode($numarLocuri); ?>,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)'
