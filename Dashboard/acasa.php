@@ -70,7 +70,7 @@ foreach ($utilizatoriRol as $row) {
             <img src="../Imagini/LogoDinamoBucuresti.png" alt="Logo">
             <h4>Bine ai venit, <b><?php echo htmlspecialchars($nume_admin); ?></b>!</h4>
             <a href="/Dashboard/acasa.php" class="active"><i class="fas fa-home"></i> Acasă</a>
-            <a href="/Dashboard/inregistrare_evenment.php"><i class="fas fa-calendar-alt"></i> Eveniment Nou</a>
+            <a href="/Dashboard/inregistrare_eveniment.php"><i class="fas fa-calendar-alt"></i> Eveniment Nou</a>
             <a href="/Dashboard/rapoarte.php"><i class="fas fa-chart-bar"></i> Rapoarte</a>
             <a href="/Dashboard/grafice.php"><i class="fas fa-chart-line"></i> Grafice</a>
         </div>

@@ -21,7 +21,8 @@ CREATE TABLE Evenimente (
     Sezon_Eveniment VARCHAR(25),
     Nume_Eveniment VARCHAR(150),
     Data_Eveniment DATETIME,
-    Locatie_Eveniment VARCHAR(50)
+    Locatie_Eveniment VARCHAR(50),
+    Logo_Echipa_Oaspete VARCHAR(255)
 );
 
 CREATE TABLE Bilete (

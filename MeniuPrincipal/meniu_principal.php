@@ -2,8 +2,35 @@
 
 session_start();
 
-?>
+include '../db_connect.php';
 
+// Setează locale pentru limba română
+setlocale(LC_TIME, 'ro_RO.UTF-8');
+
+// Obține datele celui mai recent eveniment
+$sql = "SELECT Sezon_Eveniment, Nume_Eveniment, Data_Eveniment, Locatie_Eveniment, Logo_Echipa_Oaspete FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1"; 
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Preia datele evenimentului
+    $row = $result->fetch_assoc();
+    $sezonEveniment = $row['Sezon_Eveniment'];
+    $numeEveniment = $row['Nume_Eveniment'];
+    $dataEveniment = strftime('%d %B %Y - %H:%M', strtotime($row['Data_Eveniment'])); // Formatul datei în limba română
+    $locatieEveniment = $row['Locatie_Eveniment'];
+    $logoEchipaOaspete = $row['Logo_Echipa_Oaspete'];
+} else {
+    // Setează valori implicite dacă nu există niciun eveniment
+    $sezonEveniment = "";
+    $numeEveniment = "Niciun eveniment disponibil";
+    $dataEveniment = "";
+    $locatieEveniment = "";
+    $logoEchipaOaspete = "";
+}
+
+$conn->close();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,17 +77,17 @@ session_start();
     <div class="container mt-5">
         <div class="card mx-auto" style="max-width: 840px; height: 650px;">
             <div class="card-header text-center">
-                SEZONUL 2023-2024
+                <?php echo htmlspecialchars($sezonEveniment); ?>
             </div>
             <div class="card-body">
                 <div class="card-content text-center mb-3">
-                    <h5 class="card-title text-white">PLAY-OUT - ETAPA 4</h5>
-                    <p class="card-text text-white">STADION ARCUL DE TRIUMF</p>
-                    <p class="card-text text-white">14 aprilie 2024 - 18:15</p>
+                    <h5 class="card-title text-white"><?php echo htmlspecialchars($numeEveniment); ?></h5>
+                    <p class="card-text text-white"><?php echo htmlspecialchars($locatieEveniment); ?></p>
+                    <p class="card-text text-white"><?php echo htmlspecialchars($dataEveniment); ?></p>
                 </div>
                 <div>
                     <img src="/Imagini/LogoDinamoBucuresti.png" alt="Dinamo Bucuresti" class="img-fluid home-team">
-                    <img src="/Imagini/EchipaOaspete/Superliga/LogoPoliIasi.png" alt="Echipa oaspete" class="img-fluid away-team">
+                    <img src="<?php echo htmlspecialchars($logoEchipaOaspete); ?>" alt="Echipa oaspete" class="img-fluid away-team">
                 </div>
             </div>
             <div class="card-footer">

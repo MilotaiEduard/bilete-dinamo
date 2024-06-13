@@ -36,12 +36,12 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rapoarte</title>
+    <title>Înregistrare Eveniment</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
-    <link rel="stylesheet" href="/Dashboard/rapoarte.css">
+    <link rel="stylesheet" href="/Dashboard/inregistrare_eveniment.css">
 </head>
 
 <body class="<?php if(isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark') { echo 'dark-mode'; } ?>">
@@ -50,8 +50,8 @@ $conn->close();
             <img src="../Imagini/LogoDinamoBucuresti.png" alt="Logo">
             <h4>Bine ai venit, <b><?php echo htmlspecialchars($nume_admin); ?></b>!</h4>
             <a href="/Dashboard/acasa.php"><i class="fas fa-home"></i> Acasă</a>
-            <a href="/Dashboard/inregistrare_eveniment.php"><i class="fas fa-calendar-alt"></i> Eveniment Nou</a>
-            <a href="/Dashboard/rapoarte.php" class="active"><i class="fas fa-chart-bar"></i> Rapoarte</a>
+            <a href="/Dashboard/inregistrare_eveniment.php" class="active"><i class="fas fa-calendar-alt"></i> Eveniment Nou</a>
+            <a href="/Dashboard/rapoarte.php"><i class="fas fa-chart-bar"></i> Rapoarte</a>
             <a href="/Dashboard/grafice.php"><i class="fas fa-chart-line"></i> Grafice</a>
         </div>
         <div class="bottom-section">
