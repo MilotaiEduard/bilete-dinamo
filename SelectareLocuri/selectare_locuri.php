@@ -2032,6 +2032,14 @@ $conn->close();
                 $("#popupModal").css("display", "none");
             });
 
+            // Adaugă evenimentul click la toate locurile
+            $(document).on('click', '.seat-dot', function() {
+                if ($(this).hasClass('occupied')) {
+                    // Dacă locul nu este ocupat, permite selecția
+                    $(this).toggleClass('selected');
+                }
+            });
+
             // Verifică dacă sunt locuri selectate la click pe butonul "COMANDĂ"
             $(".custom-btn-order").on("click", function() {
                 const selectedSeatsCounter = $('.seat-dot.selected').length;
