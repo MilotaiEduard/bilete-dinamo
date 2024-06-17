@@ -64,24 +64,28 @@ $conn->close();
                 <h5 class="card-title"><b>Generați un raport:</b></h5>
                 <form id="reportForm" action="generare_raport.php" method="post">
                     <div class="form-check text-left">
-                        <input class="form-check-input" type="radio" name="reportType" id="vanzariBilete" value="vanzariBilete">
-                        <label class="form-check-label" for="vanzariBilete">Raport Vânzări Bilete</label>
-                    </div>
-                    <div class="form-check text-left">
-                        <input class="form-check-input" type="radio" name="reportType" id="disponibilitateBilete" value="disponibilitateBilete">
-                        <label class="form-check-label" for="disponibilitateBilete">Raport Disponibilitate Bilete</label>
+                        <input class="form-check-input" type="radio" name="reportType" id="utilizatori" value="utilizatori">
+                        <label class="form-check-label" for="utilizatori">Raport Utilizatori</label>
                     </div>
                     <div class="form-check text-left">
                         <input class="form-check-input" type="radio" name="reportType" id="performantaEveniment" value="performantaEveniment">
                         <label class="form-check-label" for="performantaEveniment">Raport Performanță Eveniment</label>
                     </div>
                     <div class="form-check text-left">
-                        <input class="form-check-input" type="radio" name="reportType" id="venituri" value="venituri">
-                        <label class="form-check-label" for="venituri">Raport Venituri</label>
+                        <input class="form-check-input" type="radio" name="reportType" id="disponibilitateBilete" value="disponibilitateBilete">
+                        <label class="form-check-label" for="disponibilitateBilete">Raport Disponibilitate Bilete</label>
+                        </div>
+                    <div class="form-check text-left">
+                        <input class="form-check-input" type="radio" name="reportType" id="plati" value="plati">
+                        <label class="form-check-label" for="plati">Raport Plăți</label>
                     </div>
                     <div class="form-check text-left">
-                        <input class="form-check-input" type="radio" name="reportType" id="utilizatori" value="utilizatori">
-                        <label class="form-check-label" for="utilizatori">Raport Utilizatori</label>
+                        <input class="form-check-input" type="radio" name="reportType" id="vanzari" value="vanzari">
+                        <label class="form-check-label" for="vanzari">Raport Vânzări</label>
+                    </div>
+                    <div class="form-check text-left">
+                        <input class="form-check-input" type="radio" name="reportType" id="venituri" value="venituri">
+                    <label class="form-check-label" for="venituri">Raport Venituri</label>
                     </div>
                     <div class="form-check text-left">
                         <input class="form-check-input" type="radio" name="reportType" id="facturi" value="facturi">
@@ -139,7 +143,7 @@ $conn->close();
                 Swal.fire({
                     icon: 'error',
                     title: 'Eroare',
-                    text: 'Vă rugăm să selectați un tip de raport înainte de a continua!',
+                    text: 'Vă rugăm să selectați un raport înainte de a continua!',
                     confirmButtonText: 'OK'
                 });
             }

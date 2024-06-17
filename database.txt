@@ -61,7 +61,6 @@ CREATE TABLE Plati (
 
 CREATE TABLE Vanzari (
     VanzareID INT AUTO_INCREMENT PRIMARY KEY,
-    Cantitate INT(11),
     Data_Vanzare DATETIME,
     UtilizatorID INT,
     BiletID INT,
