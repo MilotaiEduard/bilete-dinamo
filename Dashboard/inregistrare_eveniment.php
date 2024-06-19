@@ -39,8 +39,7 @@ $conn->close();
     <title>Înregistrare Eveniment</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="/Dashboard/inregistrare_eveniment.css">
 </head>
 
@@ -60,8 +59,77 @@ $conn->close();
         </div>
     </div>
     <div class="content">
-        <h1>Welcome to the Dashboard</h1>
-        <p>This is your main content area.</p>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center"><b>Înregistrați un eveniment</b></h5>
+                <form action="procesare_inregistrare_eveniment.php" method="post">
+                    <div class="form-group">
+                        <label for="sezon_eveniment" class="form-label">Sezon Eveniment</label>
+                        <input type="text" class="form-control" id="sezon_eveniment" name="sezon_eveniment" autocomplete="off" placeholder="ex: Sezonul 2024-2025">
+                    </div>
+                    <div class="form-group">
+                        <label for="nume_eveniment" class="form-label">Nume Eveniment</label>
+                        <input type="text" class="form-control" id="nume_eveniment" name="nume_eveniment" autocomplete="off" placeholder="ex: Dinamo Bucuresti - UTA Arad - Etapa 2">
+                    </div>
+                    <div class="form-group">
+                        <label for="data_eveniment" class="form-label">Data Eveniment</label>
+                        <input type="datetime-local" class="form-control" id="data_eveniment" name="data_eveniment">
+                    </div>
+                    <div class="form-group">
+                        <label for="locatie_eveniment" class="form-label">Locație Eveniment</label>
+                        <input type="text" class="form-control" id="locatie_eveniment" name="locatie_eveniment" autocomplete="off" placeholder="ex: Stadion Arcul de Triumf, Bucuresti">
+                    </div>
+                    <div class="form-group">
+                        <label for="echipa_oaspete" class="form-label">Echipa Oaspete</label>
+                        <select class="form-control" id="echipa_oaspete" name="echipa_oaspete">
+                            <option value="">Selectează echipa</option>
+                            <optgroup label="Superliga">
+                                <option value="Botosani">FC Botoșani</option>
+                                <option value="CFR">CFR Cluj</option>
+                                <option value="Farul">Farul Constanța</option>
+                                <option value="FCSB">FCSB</option>
+                                <option value="Hermannstadt">FC Hermannstadt</option>
+                                <option value="Otelul">Oțelul Galați</option>
+                                <option value="Petrolul">Petrolul Ploiești</option>
+                                <option value="Iasi">Poli Iași</option>
+                                <option value="Rapid">Rapid București</option>
+                                <option value="Sepsi">Sepsi Sf. Gheorghe</option>
+                                <option value="UCluj">U Cluj</option>
+                                <option value="UCraiova">U Craiova 1948</option>
+                                <option value="UnivCraiova">Universitatea Craiova</option>
+                                <option value="UTA">UTA Arad</option>
+                                <option value="Voluntari">FC Voluntari</option>
+                            </optgroup>
+                            <optgroup label="Liga II">
+                                <option value="Alexandria">Alexandria</option>
+                                <option value="Arges">FC Argeș</option>
+                                <option value="Ceahlaul">Ceahlăul P. Neamț</option>
+                                <option value="Chindia">Chindia Târgoviște</option>
+                                <option value="Concordia">Concordia Chiajna</option>
+                                <option value="Corvinul">Corvinul Hunedoara</option>
+                                <option value="Csikszereda">Csikszereda M. Ciuc</option>
+                                <option value="Dumbravita">CSC Dumbrăvița</option>
+                                <option value="Gloria">Gloria Buzău</option>
+                                <option value="Metaloglobus">Metaloglobus București</option>
+                                <option value="Mioveni">CS Mioveni</option>
+                                <option value="Progresul">Progresul Spartac</option>
+                                <option value="Resita">CSM Reșița</option>
+                                <option value="Selimbar">CSC 1599 Șelimbăr</option>
+                                <option value="Slatina">CSM Slatina</option>
+                                <option value="Steaua">CSA Steaua București</option>
+                                <option value="Tunari">Tunari</option>
+                                <option value="Dej">Unirea Dej</option>
+                                <option value="Slobozia">Unirea Slobozia</option>
+                                <option value="Viitorul">ACS Viitorul Tg. Jiu</option>
+                            </optgroup>
+                        </select>
+                        <!-- Input hidden pentru logo echipa oaspete -->
+                        <input type="hidden" id="logo_echipa_oaspete" name="logo_echipa_oaspete">
+                    </div>
+                    <button type="submit" class="btn custom-btn">Înregistrează Eveniment</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -98,6 +166,97 @@ $conn->close();
                     document.getElementById('mode-icon').classList.remove('fa-sun');
                     document.getElementById('mode-icon').classList.add('fa-moon');
                 }
+            }
+        });
+
+        const echipeLogoMap = {
+            'Botosani': '/Imagini/EchipaOaspete/Superliga/LogoBotosani.png',
+            'CFR': '/Imagini/EchipaOaspete/Superliga/LogoCFR.png',
+            'Farul': '/Imagini/EchipaOaspete/Superliga/LogoFarul.png',
+            'FCSB': '/Imagini/EchipaOaspete/Superliga/LogoFCSB.png',
+            'Hermannstadt': '/Imagini/EchipaOaspete/Superliga/LogoHermannstadt.png',
+            'Otelul': '/Imagini/EchipaOaspete/Superliga/LogoOtelul.png',
+            'Petrolul': '/Imagini/EchipaOaspete/Superliga/LogoPetrolul.png',
+            'Iasi': '/Imagini/EchipaOaspete/Superliga/LogoPoliIasi.png',
+            'Rapid': '/Imagini/EchipaOaspete/Superliga/LogoRapid.png',
+            'Sepsi': '/Imagini/EchipaOaspete/Superliga/LogoSepsi.png',
+            'UCluj': '/Imagini/EchipaOaspete/Superliga/LogoUCluj.png',
+            'UCraiova': '/Imagini/EchipaOaspete/Superliga/LogoUCraiova.png',
+            'UnivCraiova': '/Imagini/EchipaOaspete/Superliga/LogoUnivCraiova.png',
+            'UTA': '/Imagini/EchipaOaspete/Superliga/LogoUTA.png',
+            'Voluntari': '/Imagini/EchipaOaspete/Superliga/LogoVoluntari.png',
+            'Alexandria': '/Imagini/EchipaOaspete/Liga II/LogoAlexandria.png',
+            'Arges': '/Imagini/EchipaOaspete/Liga II/LogoArges.png',
+            'Ceahlaul': '/Imagini/EchipaOaspete/Liga II/LogoCeahlaul.png',
+            'Chindia': '/Imagini/EchipaOaspete/Liga II/LogoChindia.png',
+            'Concordia': '/Imagini/EchipaOaspete/Liga II/LogoConcordia.png',
+            'Corvinul': '/Imagini/EchipaOaspete/Liga II/LogoCorvinulHunedoara.png',
+            'Csikszereda': '/Imagini/EchipaOaspete/Liga II/LogoCsikszereda.png',
+            'Dumbravita': '/Imagini/EchipaOaspete/Liga II/LogoDumbravita.png',
+            'Gloria': '/Imagini/EchipaOaspete/Liga II/LogoGloriaBuzau.png',
+            'Metaloglobus': '/Imagini/EchipaOaspete/Liga II/LogoMetaloglobus.png',
+            'Mioveni': '/Imagini/EchipaOaspete/Liga II/LogoMioveni.png',
+            'Progresul': '/Imagini/EchipaOaspete/Liga II/LogoProgresulSpartac.png',
+            'Resita': '/Imagini/EchipaOaspete/Liga II/LogoResita.png',
+            'Selimbar': '/Imagini/EchipaOaspete/Liga II/LogoSelimbar.png',
+            'Slatina': '/Imagini/EchipaOaspete/Liga II/LogoSlatina.png',
+            'Steaua': '/Imagini/EchipaOaspete/Liga II/LogoSteaua.png',
+            'Tunari': '/Imagini/EchipaOaspete/Liga II/LogoTunari.png',
+            'Dej': '/Imagini/EchipaOaspete/Liga II/LogoUnireaDej.png',
+            'Slobozia': '/Imagini/EchipaOaspete/Liga II/LogoUnireaSlobozia.png',
+            'Viitorul': '/Imagini/EchipaOaspete/Liga II/LogoViitorulTgJiu.png',
+        };
+
+        document.getElementById('echipa_oaspete').addEventListener('change', function() {
+            const selectedTeam = this.value;
+            const logoSrc = echipeLogoMap[selectedTeam] || '';
+            document.getElementById('logo_echipa_oaspete').value = logoSrc;
+        });
+
+        // Validare formular
+        document.querySelector('form').addEventListener('submit', function(event) {
+            let valid = true;
+            let errorMessage = '';
+
+            const sezonEveniment = document.getElementById('sezon_eveniment').value.trim();
+            const numeEveniment = document.getElementById('nume_eveniment').value.trim();
+            const dataEveniment = document.getElementById('data_eveniment').value.trim();
+            const locatieEveniment = document.getElementById('locatie_eveniment').value.trim();
+            const echipaOaspete = document.getElementById('echipa_oaspete').value.trim();
+            const currentDateTime = new Date().toISOString().slice(0, 16); // Data și ora curentă în format ISO
+
+            if (sezonEveniment === '') {
+                valid = false;
+                errorMessage += 'Sezonul evenimentului este obligatoriu.<br>';
+            }
+            if (numeEveniment === '') {
+                valid = false;
+                errorMessage += 'Numele evenimentului este obligatoriu.<br>';
+            }
+            if (dataEveniment === '') {
+                valid = false;
+                errorMessage += 'Data evenimentului este obligatorie.<br>';
+            } else if (dataEveniment < currentDateTime) {
+                valid = false;
+                errorMessage += 'Data evenimentului nu poate fi în trecut.<br>';
+            }
+            if (locatieEveniment === '') {
+                valid = false;
+                errorMessage += 'Locația evenimentului este obligatorie.<br>';
+            }
+            if (echipaOaspete === '') {
+                valid = false;
+                errorMessage += 'Selectarea echipei oaspete este obligatorie.<br>';
+            }
+
+            if (!valid) {
+                event.preventDefault();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Eroare la înregistrarea evenimentului',
+                    html: errorMessage,
+                    confirmButtonText: 'OK'
+                });
             }
         });
     </script>

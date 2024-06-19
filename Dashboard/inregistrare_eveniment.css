@@ -64,6 +64,60 @@ body {
     width: 100%;
 }
 
+.card {
+    width: 28%;
+    margin: 25px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border: 2px solid #000;
+}
+
+.form-control:focus {
+    border-color: #000; /* Schimbă culoarea border-ului */
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.346);
+}
+
+.custom-btn {
+    display: block;
+    background-color: #ED1C24;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
+    width: 200px;
+    margin-top: 45px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-btn:hover {
+    background-color: #000;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.custom-btn:focus,
+.custom-btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
 /* Dark mode styles */
 body.dark-mode {
     background-color: #212121;
