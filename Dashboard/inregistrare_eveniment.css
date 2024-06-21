@@ -144,3 +144,16 @@ body.dark-mode {
 body.dark-mode .sidebar .top-section img {
     filter: grayscale(100%);
 }
+
+body.dark-mode .content .card {
+    background-color: #171717;
+    color: #fff;
+}
+
+body.dark-mode .custom-btn {
+    background-color: #333333;
+}
+
+body.dark-mode .custom-btn:hover {
+    background-color: #272727;
+}

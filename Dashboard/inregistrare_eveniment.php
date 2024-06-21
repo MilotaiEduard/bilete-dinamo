@@ -27,6 +27,63 @@ $stmt->execute();
 $stmt->bind_result($nume_admin);
 $stmt->fetch();
 $stmt->close();
+
+// Verifică dacă formularul a fost trimis
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obține datele din formular
+    $sezon_eveniment = trim($_POST['sezon_eveniment']);
+    $nume_eveniment = trim($_POST['nume_eveniment']);
+    $data_eveniment = trim($_POST['data_eveniment']);
+    $locatie_eveniment = trim($_POST['locatie_eveniment']);
+    $logo_echipa_oaspete = trim($_POST['logo_echipa_oaspete']);
+
+    // Verifică dacă toate câmpurile sunt completate
+    if (!empty($sezon_eveniment) && !empty($nume_eveniment) && !empty($data_eveniment) && !empty($locatie_eveniment) && !empty($logo_echipa_oaspete)) {
+        // Încearcă să inserezi evenimentul în baza de date
+        $stmt = $conn->prepare("INSERT INTO Evenimente (Sezon_Eveniment, Nume_Eveniment, Data_Eveniment, Locatie_Eveniment, Logo_Echipa_Oaspete) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $sezon_eveniment, $nume_eveniment, $data_eveniment, $locatie_eveniment, $logo_echipa_oaspete);
+
+        if ($stmt->execute()) {
+            // Resetează disponibilitatea locurilor doar pentru locurile ocupate
+            $resetStmt = $conn->prepare("UPDATE DetaliiLocuri SET Disponibilitate = 'Disponibil' WHERE Disponibilitate = 'Ocupat'");
+            $resetStmt->execute();
+            $resetStmt->close();
+            
+            // Afișează mesajul de succes
+            echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Succes',
+                    text: 'Evenimentul a fost înregistrat cu succes.',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'inregistrare_eveniment.php';
+                });
+            </script>";
+        } else {
+            echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Eroare',
+                    text: 'A apărut o eroare la înregistrarea evenimentului.',
+                    confirmButtonText: 'OK'
+                });
+            </script>";
+        }
+
+        $stmt->close();
+    } else {
+        echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Eroare la înregistrarea evenimentului',
+                text: 'Toate câmpurile sunt obligatorii!',
+                confirmButtonText: 'OK'
+            });
+        </script>";
+    }
+}
+
 $conn->close();
 
 ?>
@@ -62,7 +119,7 @@ $conn->close();
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title text-center"><b>Înregistrați un eveniment</b></h5>
-                <form action="procesare_inregistrare_eveniment.php" method="post">
+                <form id="eventForm" action="inregistrare_eveniment.php" method="post">
                     <div class="form-group">
                         <label for="sezon_eveniment" class="form-label">Sezon Eveniment</label>
                         <input type="text" class="form-control" id="sezon_eveniment" name="sezon_eveniment" autocomplete="off" placeholder="ex: Sezonul 2024-2025">
@@ -215,6 +272,7 @@ $conn->close();
 
         // Validare formular
         document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne trimiterea implicită a formularului
             let valid = true;
             let errorMessage = '';
 
@@ -250,12 +308,22 @@ $conn->close();
             }
 
             if (!valid) {
-                event.preventDefault();
                 Swal.fire({
                     icon: 'error',
                     title: 'Eroare la înregistrarea evenimentului',
                     html: errorMessage,
                     confirmButtonText: 'OK'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Succes',
+                    text: 'Evenimentul a fost înregistrat cu succes.',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('eventForm').submit(); // Trimite formularul manual
+                    }
                 });
             }
         });
