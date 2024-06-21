@@ -55,15 +55,15 @@ session_start();
             <h3>Etapele pentru efectuarea unei comenzi online:</h3>
             <p>1. Accesați www.bilete-dinamo și vă creați cont.</p>
             <p>2. După autentificare, în meniul principal veți vedea evenimentul curent și pentru a achiziționa un bilet apăsați pe butonul "CUMPĂRĂ BILET".</p>
-            <p>3. Selectați sectorul (portocaliu - sector selectat, roșu - sector disponibil, gri - sector indisponibil) și apoi locurile.</p>
-            <p>4. După selectarea locurilor în sectorul dorit, vă va apărea totalul de plată, iar dedesubt este butonul "COMANDĂ BILETE". Apăsați pe acel buton.</p>
+            <p>3. Selectați sectorul și apoi locurile.</p>
+            <p>4. După selectarea locurilor în sectorul dorit apăsați pe butonul "COMANDĂ".</p>
             <p>5. În continuare, veți vedea detaliile comenzii.</p>
             <p>6. Completați câmpurile din "Date facturare", iar la modalitatea de plată bifați "Card online".</p>
             <p>7. Va apărea un formular în care să introduceți datele cardului.</p>
-            <p>8. După completarea acestor date, apăsați pe butonul "ACHIZIȚIONEAZĂ BILETE".</p>
-            <p>9. În scurt timp, după ce plata a fost procesată cu succes, veți primi biletul digital, însoțitit de factura fiscală.</p>
+            <p>8. După completarea acestor date, apăsați pe butonul "Plătiți".</p>
+            <p>9. În scurt timp, după ce plata a fost procesată cu succes, veți primi biletul digital, însoțitit de factura fiscală, pe adresa de e-mail specificată.</p>
             <h3>Metoda de plată:</h3>
-            <p>Bilete comandate pot fi plătite online cu cardul, cardurile acceptate fiind Visa, Maestro și Mastercard.</p>
+            <p>Biletele comandate pot fi plătite online cu cardul, cardurile acceptate fiind Visa, Mastercard, American Express și UnionPay.</p>
             <h3>Returnarea banilor pe bilete:</h3>
             <p>În situațiile în care un eveniment se anulează, sau se decide ulterior că se joacă fară spectatori, contravaloarea biletelor va fi returnată clienților.</p>
         </div>
