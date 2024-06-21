@@ -11,6 +11,8 @@ setlocale(LC_TIME, 'ro_RO.UTF-8');
 $sql = "SELECT Sezon_Eveniment, Nume_Eveniment, Data_Eveniment, Locatie_Eveniment, Logo_Echipa_Oaspete FROM Evenimente ORDER BY EvenimentID DESC LIMIT 1"; 
 $result = $conn->query($sql);
 
+$eveniment_disponibil = false;
+
 if ($result->num_rows > 0) {
     // Preia datele evenimentului
     $row = $result->fetch_assoc();
@@ -19,8 +21,16 @@ if ($result->num_rows > 0) {
     $dataEveniment = strftime('%d %B %Y - %H:%M', strtotime($row['Data_Eveniment'])); // Formatul datei în limba română
     $locatieEveniment = $row['Locatie_Eveniment'];
     $logoEchipaOaspete = $row['Logo_Echipa_Oaspete'];
-} else {
-    // Setează valori implicite dacă nu există niciun eveniment
+    $dataEvenimentTimestamp = strtotime($row['Data_Eveniment']);
+
+    // Verifică dacă data evenimentului este în viitor
+    if ($dataEvenimentTimestamp >= time()) {
+        $eveniment_disponibil = true;
+    }
+} 
+
+if (!$eveniment_disponibil) {
+    // Setează valori implicite dacă nu există niciun eveniment disponibil
     $sezonEveniment = "";
     $numeEveniment = "Niciun eveniment disponibil";
     $dataEveniment = "";
@@ -75,29 +85,37 @@ $conn->close();
     </nav>
 
     <div class="container mt-5">
-        <div class="card mx-auto" style="max-width: 840px; height: 650px;">
-            <div class="card-header text-center">
-                <?php echo htmlspecialchars($sezonEveniment); ?>
-            </div>
-            <div class="card-body">
-                <div class="card-content text-center mb-3">
-                    <h5 class="card-title text-white"><?php echo htmlspecialchars($numeEveniment); ?></h5>
-                    <p class="card-text text-white"><?php echo htmlspecialchars($locatieEveniment); ?></p>
-                    <p class="card-text text-white"><?php echo htmlspecialchars($dataEveniment); ?></p>
+        <?php if ($eveniment_disponibil): ?>
+            <div class="card mx-auto" style="max-width: 840px; height: 650px;">
+                <div class="card-header text-center">
+                    <?php echo htmlspecialchars($sezonEveniment); ?>
                 </div>
-                <div>
-                    <img src="/Imagini/LogoDinamoBucuresti.png" alt="Dinamo Bucuresti" class="img-fluid home-team">
-                    <img src="<?php echo htmlspecialchars($logoEchipaOaspete); ?>" alt="Echipa oaspete" class="img-fluid away-team">
+                <div class="card-body">
+                    <div class="card-content text-center mb-3">
+                        <h5 class="card-title text-white"><?php echo htmlspecialchars($numeEveniment); ?></h5>
+                        <p class="card-text text-white"><?php echo htmlspecialchars($locatieEveniment); ?></p>
+                        <p class="card-text text-white"><?php echo htmlspecialchars($dataEveniment); ?></p>
+                    </div>
+                    <div>
+                        <img src="/Imagini/LogoDinamoBucuresti.png" alt="Dinamo Bucuresti" class="img-fluid home-team">
+                        <img src="<?php echo htmlspecialchars($logoEchipaOaspete); ?>" alt="Echipa oaspete" class="img-fluid away-team">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="/SelectareLocuri/selectare_locuri.php" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
+                    <?php else: ?>
+                        <a href="/Autentificare/autentificare.php" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
+                    <?php endif; ?>
                 </div>
             </div>
-            <div class="card-footer">
-                <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="/SelectareLocuri/selectare_locuri.php" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
-                <?php else: ?>
-                    <a href="/Autentificare/autentificare.php" class="btn btn-block custom-btn">CUMPĂRĂ BILET</a>
-                <?php endif; ?>
+        <?php else: ?>
+            <div class="card mx-auto" style="max-width: 840px; height: 650px;">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-white">Momentan nu există niciun eveniment disponibil.</h5>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
     <footer class="footer-custom">

@@ -318,7 +318,7 @@ $conn->close();
                     datasets: [{
                         label: 'Disponibilitatea locurilor',
                         data: <?php echo json_encode($availability_counts); ?>,
-                        backgroundColor: ['#dc3545', '#28a745'],
+                        backgroundColor: ['#28a745', '#dc3545'],
                         borderColor: '#fff',
                         borderWidth: 1
                     }]
