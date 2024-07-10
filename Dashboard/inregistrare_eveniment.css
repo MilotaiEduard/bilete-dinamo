@@ -86,7 +86,7 @@ body {
 }
 
 .form-control:focus {
-    border-color: #000; /* Schimbă culoarea border-ului */
+    border-color: #000;
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.346);
 }
 

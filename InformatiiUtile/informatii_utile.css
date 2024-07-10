@@ -41,7 +41,7 @@ body {
 @media (min-width: 992px) {
     .logo-outside {
         position: absolute;
-        top: -8px; /* Ajustează dacă e necesar */
+        top: -8px;
         left: 2rem;
         z-index: 10;
     }
@@ -136,7 +136,7 @@ p {
     font-size: 1.1rem;
 }
 
-/* Stil pentru ultimul paragraf din fiecare secțiune, pentru a adăuga spațiu suplimentar dedesubt, dacă e necesar */
+/* Stil pentru ultimul paragraf din fiecare secțiune, pentru a adăuga spațiu suplimentar dedesubt */
 .custom-content h3:not(:first-of-type) {
     margin-top: 2.2rem;
 }
@@ -205,14 +205,14 @@ p {
     .footer-container {
         flex-direction: column;
         text-align: center;
-        width: 100%; /* Asigură-te că container-ul se întinde pe toată lățimea */
+        width: 100%;
     }
     .footer-left {
         margin-left: 0px;
     }
     .footer-left, .footer-right {
         text-align: center;
-        width: 100%; /* Asigură-te că fiecare coloană se întinde pe toată lățimea */
+        width: 100%;
     }
     .footer-right a {
         display: block; /* Face ca fiecare link să ocupe propria sa linie */
